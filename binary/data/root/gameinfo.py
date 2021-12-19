@@ -1,0 +1,6 @@
+SYSTEMS_WINDOW_KAPAT = 0
+SYSTEMS_WINDOW_OPEN = 0
+
+INPUT = 0
+CLIENT_YOL = "lib/"
+CONFIG_YOL = "locale/tr/ui/config/"

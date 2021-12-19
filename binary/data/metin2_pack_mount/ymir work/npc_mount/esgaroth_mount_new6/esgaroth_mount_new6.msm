@@ -1,0 +1,154 @@
+ScriptType            RaceDataScript
+
+BaseModelFileName     "d:/ymir work/npc_mount/esgaroth_mount_new6/esgaroth_mount_new6.gr2"
+
+Group ShapeData
+{
+    PathName 		 "D:\Ymir Work\"
+    ShapeDataCount		 1
+	
+	Group ShapeData00
+    {
+        ShapeIndex 		 0
+        Model 			 "npc_mount\esgaroth_mount_new6\esgaroth_mount_new6.gr2"
+        SourceSkin 		 "esgaroth_mount\T_Necro_Mount_D.tga"
+        TargetSkin 		 "esgaroth_mount\T_Necro_Mount_D.tga"
+    }
+}
+
+Group ShapeData
+{
+    PathName 		 ""
+    ShapeDataCount 		 0
+}
+Group AttachingData
+{
+    AttachingDataCount       9
+    
+    Group AttachingData00
+    {
+        AttachingDataType    1
+        
+        isAttaching          0
+        AttachingModelIndex  0
+        AttachingBoneName    "Bip01"
+        
+        CollisionType        3
+        
+        SphereDataCount      1
+        Group SphereData00
+        {
+            Radius           70.000000
+            Position         0.000000 0.000000 90.000000
+        }
+    }
+    
+    Group AttachingData01
+    {
+        AttachingDataType    1
+        
+        isAttaching          0
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bip001"
+        
+        CollisionType        1
+        
+        SphereDataCount      1
+        Group SphereData00
+        {
+            Radius           40.000000
+            Position         0.000000 0.000000 90.000000
+        }
+    }
+    
+    Group AttachingData02
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bip001-R-Foot"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\ogon.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+    
+    Group AttachingData03
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bip001-L-Foot"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\ogon.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+    
+    Group AttachingData04
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bip001-L-Hand"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\ogon.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+    
+    Group AttachingData05
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bip001-R-Hand"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\ogon.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+    
+    Group AttachingData06
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bone01"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\noga.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+    
+    Group AttachingData07
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bone03"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\ogon1.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+    
+    Group AttachingData08
+    {
+        AttachingDataType    2
+        
+        isAttaching          1
+        AttachingModelIndex  0
+        AttachingBoneName    "GRIM_horse_Bip001-Neck"
+        
+        EffectScriptName     "D:\ymir work\effect\pet\noga.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+        EffectRotation       0.000000 0.000000 0.000000
+    }
+}

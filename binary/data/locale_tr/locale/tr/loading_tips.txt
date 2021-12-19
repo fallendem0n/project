@@ -1,0 +1,79 @@
+1	Bir Yükseltme Parþömeni kullanarak, bir iyileþtirmenin baþarýsýz olmasý durumunda bir öðenin yok edilmesini önleyebilirsiniz.
+2	Evlenmeye hazýr mýsýn? O zaman Yaþlý Kadýnla konuþ.
+3	Iþýnlayýcý, seni seviye 10'dan yüksek diðer bölgelere hýzla taþýyabilir.
+4	Lonca sistemini öðrenmek için köy koruyucularý ile konuþ.
+5	Savaþ Bölgesi ve nasýl girileceði hakkýnda bilgi edinmek için mini haritanýzýn yanýndaki 'B'yi týklayýn.
+6	Depo þifrenizi düzenli aralýklarla deðiþtirmeyi unutmayýn. Eþeði saðlam kazýða baðlamak gerekir!
+7	Baek-Go güçlü iksirleri hazýrlamanýza yardýmcý olur.
+8	Giddy! Seviye 25'ten itibaren Stable Boy'dan yeni baþlayanlar için at arayýþýna baþlayabilirsin.
+9	Oyun seçeneklerinden 'Klavye'yi seçerek kýsayollarýnýzý deðiþtirin.
+10	15. seviyeden itibaren heyecan verici PvP düellolarýna hazýr ol!
+11	Balýk avý hakkýnda bilgi edinmek ve sizi baþlatmak için biraz donaným almak için Balýkçý ile konuþun. Rastgele!
+12	Macera Moogli2 ile Yaþanýr...
+13	Moogli2 Serverine Hoþgeldiniz...
+14	Evcil hayvanýnýzý ne yediðinize dikkat edin. Bir kez yenildiðinde, öðeyi asla geri alamazsýnýz.
+15	Dönüþümde iken herhangi bir beceri kullanamazsýnýz.
+16	Biyolog Chaegirab'ýn görevlerinin ödülü olarak aldýðýnýz bonuslar kalýcý.
+17	Seviye 30'a kadar olan ve dahil karakterlerin yetenekleri Yaþlý Kadýn tarafýndan sýfýrlanabilir.
+18	Evlenen karakterler 15 seviyeden daha fazla olamaz.
+19	Öðeler yükseltilince daha etkileyici bir görünüm kazanýyor.
+20	Hey sen oradaki! Evet sen! Metin2 Takýmý <3 siz! x)
+21	Ruha baðlama ile eþyalarýnýzý hýrsýzlýktan koruyun.
+22	"Hayvanlara Karþý Güçlü" bonusu ile Maymun Zindaný'daki maymunlara daha fazla hasar verirsin.
+23	Dikkat et, çünkü Maymun Zindaný'ndaki canavarlar çok hýzlý yumurtlar.
+24	Burada daha önce bulundum galiba? Maymun Zindaný'nda sürekli dejà vus hissine kapýlacaksýn.
+25	Maymun Zindaný'nda mini haritan olmayacak.
+26	Araknofobi mi? Metin2 böcekleri arasýnda dev örümcekler de bulunur!
+27	Iþýnlanma halkasýný kullanýlarak Örümcek Zindaný'na hýzlý ve kolay bir þekilde ulaþabilirsin.
+28	Kraliçe Örümcek'e dikkat et. Zehiri çok tehlikelidir!
+29	Örümcek Zindaný 2'ye girmek için geçit biletine ihtiyacýn olacak.
+30	Örümcek Barones'in üreme maðarasýný Arachnida Anahtarý ile aç.
+31	Çok az maceracý Þeytan kulesinden canlý olarak geri döndü!
+32	Þeytan kulesinde ödül olarak çok sayýda EXP ve eþya toplayabilirsin.
+33	6. katta bulunan efsanevi Þeytan Kulesi demircisine býçaðýný bilet!
+34	Þeytan kulesindeki yaratýklara karþý karanlýða karþý dirençle silahlan.
+35	Þeytan Katakombu'ndaki yaratýklara karþý karanlýða karþý dirençle silahlan.
+36	Þeytan Katakombu'nun kapýlarý ancak öncesinde Þeytan Kulesi'ni fethedersen açýlýr.
+37	Þeytan Katakombu'nda mini haritan olmayacak.
+38	Þeytan Katakombu'nda birbirinize grup olarak kollayýn.
+39	Ýblis Lordu Azrail, evcil hayvan olarak ýsýrgan zebaniler besler.
+40	Þeytan Katakombu'nun 2. seviyesine ulaþmak için, tüm grup üyelerinin bir Küçülen kafaya sahip olmalarý gerekir.
+41	Sürgün maðarasý korkunç yaratýklarla doludur.
+42	Sürgün maðarasýna girmek için bir kan taþýna ihtiyacýn var.
+43	Sürgün maðarasýnda seni korku ve dehþetin yaný sýra deðerli hazineler de bekliyor.
+44	Zalim tanrý Beran-Setaou, seni maðaranýn 3. katýndaki ejderha tapýnaðýnda bekliyor.
+45	Beran-Setaou gücünü Metin taþýndan alýr. Düþmüþ tanrýyý yenmek için onu imha et.
+46	Sürgün maðarasýndaki yaratýklara karþý buz ve yýldýrým direncini kuþan.
+47	Sürgün maðarasýndaki ejderha tapýnaðýna sadece bir grupla girebilirsin.
+48	Beran-Setaou'yu yenmek için 1 saatiniz var.
+49	Kýrmýzý ejderha kalesinde parlayan lavlar akar.
+50	Kýrmýzý ejderha kalesi bölgesini baþarýyla tamamladýktan sonra Razador'u vur!
+51	Kýrmýzý ejderha kalesinde ýþýnlanma parþömenleri çalýþmaz.
+52	Kýrmýzý ejderha kalesindeki yaratýklara karþý ateþe karþý dirençle silahlan.
+53	Kýrmýzý ejderha kalesini grubunla birlikte 1 saat içinde fethetmelisin.
+54	Nemere Gözlemevi'ni ele geçirmek için yanýnda en az bir Ninja ve bir Þaman olmalý.
+55	Nemere Gözlemevi'ndeki yaratýklara karþý buza karþý dirençle silahlan.
+56	Nemere Gözlemevi 9 kat ve bir de patron odasýndan oluþur.
+57	Nemere Gözlemevi'nde binek çaðýramazsýn.
+58	Nemere Gözlemevi'ni 1 saatte fethedebilir misiniz?
+59	Kayýp savaþçýlarý Nemere Gözlemevi'nden kurtarabilir misin?
+60	En-Tai Bekçisi, Ochao Tapýnaðý'nda rastgele bir yerde ortaya çýkar. Tekrar kaybolmadan ona saldýr.
+61	En-Tai Bekçisi'ni yenmek ve Efsunlu Orman portalýný açmak için 3 dakika süren var.
+62	Efsunlu Orman yaratýklarýna karþý rüzgara karþý dirençle silahlan.
+63	Jotun Thrym'in yanýnda güçlü bir ordusu var.
+64	Erebos sadece Orman Perisi Taþý ile fethedilebilir.
+65	Bagjanamu'yu yendiðin anda Jotun Thrym belirir.
+66	Orman Perisi için "Hükümdarý yen" görevini tekrarlayabilirsin.
+67	Ejderha Kraliçesi Meley'e doðrudan saldýramazsýn. Sadece ejderha heykellerinden hasar alýr.
+68	Meley'in ini yaratýklarýna karþý ateþe karþý dirençle silahlan.
+69	Ejderha heykellerini imhaetmek için Meley'in ininde ejderha ateþ yüzüðünü kap.
+70	Meley'in inine girebilmek için loncan yeterli lonca puanýna sahip olmalý.
+71	Zindaný fethetme hýzýnýz ve katýlýmcý sayýsý maðaradaki sýralamayý belirler.
+72	Kraliçe Meley'in sandýðýnda kýrmýzý ejderha yumurtasi ile küçük Meley petini bulabilirsin!
+73	Meley'in inini (Lonca) baþarýyala tamamlamak için loncanýn en az 4 üyesi olmalý.
+74	Meley'in ini (Grup) PvP kaský malzemesi, Meley'in ini (Lonca) PvE kaský malzemesi içerir.
+75	Zodyak Tapýnaðý, içinde 12 bekçi bulunan 12 farklý zindandan oluþur.
+76	Her bir Zodyak Tapýnaðý'na farklý bir günde ulaþabilirsin.
+77	Her Zodyak Tapýnaðý bekçisini güçlendiren, kendine has bir elemente sahiptir.
+78	Zi Tapýnaðý'nda karanlýða karþý direnç ile savaþa hazýrlan.
+79	Chou Tapýnaðý'nda toprak direnci ile savaþa hazýrlan.

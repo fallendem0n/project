@@ -1,0 +1,4 @@
+1-Pencere açık fixleri
+2-Zindan takip açık penceer fix
+3-game_option.quest ve diğer questler ayarlanacak
+4- büyü cozme şebnem test edilecek

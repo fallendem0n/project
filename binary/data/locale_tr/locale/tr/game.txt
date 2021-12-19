@@ -1,0 +1,12 @@
+LOGIN_GIRISAYARLARI_TITLE	Login -> Ayarlar
+LOGIN_DUYURULAR_ACIK	Duyurular Açýk
+LOGIN_DUYURULAR_KAPALI	Duyurular Kapalý
+LOGIN_IDSILEBILIRSIN	ID Silebilirsin.
+LOGIN_SIFRESILEBILIRSIN	Þifre Silebilirsin.
+LOGIN_KAYITOK	Hesap kayýt edildi!
+LOGIN_TUMDOLU	Tüm hesaplar dolu.Lütfen bir slot silin!
+LOGIN_KANALSECILMEMIS	Game sunucusu seçilmemiþ.
+LOGIN_BOS	Boþ
+LOGIN_KAYDET_BOS	Kayýt edilicek bir hesap veya þifre girilmemiþ.
+LOGIN_SOCIAL_FACE	Facebook
+LOGIN_SOCIAL_YOU	Youtube

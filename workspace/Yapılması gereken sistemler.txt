@@ -1,0 +1,14 @@
+9- Kemer Efsunlama
+14- sandık arayüz
+15- simya destansi icon
+17 - sınırsız yang
+9 skill baştan sonra test edilecek beceri kitabi + questleri + skill protosu her şeyi
+10-şaman kükreme yakın effekt msalari bulunacak
+11-effektler m1 olarak gözüküyor
+12-kutsal kase itemleri itemprotodan düzenlenecek
+13-rank sistemi baştan aşaği kontrol edilecek itemler cogaltılacak
+14-şebnem set bonus
+16-ejderha tanrı set bonus
+17-tılsım set bonus
+20-ticaret test edilecek
+21-cube k envanteri ticaret şubu  herşey test edilecek

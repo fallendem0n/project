@@ -1,0 +1,21 @@
+ScriptType               MotionData
+
+MotionFileName           "D:\ymir work\npc\plechi_oriental_horse2\stay00.GR2"
+MotionDuration           1.875000
+
+Group MotionEventData
+{
+    MotionEventDataCount     1
+    Group Event00
+    {
+        MotionEventType      1
+        StartingTime         0.701395
+        
+        IndependentFlag      0
+        AttachingEnable      1
+        AttachingBoneName    "Bip02 HeadNub"
+        FollowingEnable      0
+        EffectFileName       "d:/ymir work/npc/plechi_oriental_horse2/stay00_smoke.mse"
+        EffectPosition       0.000000 -10.000000 -30.000000
+    }
+}

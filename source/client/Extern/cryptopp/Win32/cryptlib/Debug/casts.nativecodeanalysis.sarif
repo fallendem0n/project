@@ -1,0 +1,1016 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "'CryptoPP::CipherDir' sabit listesi türü kapsamlı değil. 'enum' yerine 'enum class' tercih edin (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/seckey.h"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 18,
+                  "endLine": 32,
+                  "endColumn": 18
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?ReverseCipherDir@CryptoPP@@YA?AW4CipherDir@1@W421@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "'CryptoPP::SimpleKeyingInterface::IV_Requirement' sabit listesi türü kapsamlı değil. 'enum' yerine 'enum class' tercih edin (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/seckey.h"
+                },
+                "region": {
+                  "startLine": 289,
+                  "startColumn": 4,
+                  "endLine": 289,
+                  "endColumn": 68
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?IVRequirement@?$SimpleKeyingInterfaceImpl@V?$TwoBases@VBlockCipher@CryptoPP@@UCAST256_Info@2@@CryptoPP@@V12@@CryptoPP@@UBE?AW4IV_Requirement@SimpleKeyingInterface@2@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.28.29914.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00F8B1C0 -allChunksReserved -il C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\_CL_208d1c25ast -typedil -f casts.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1928 -D_MSC_FULL_VER=192829914 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -GR -D_CPPRTTI -nologo -W 4 -diagnostics:column -Ot -Oi -DCODE_ANALYSIS -DUSE_PRECOMPILED_HEADERS -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MTd -clrNoPureCRT -D_DEBUG -D_MT -GS -D_M_IX86_FP=2 -D_M_FP_PRECISE -Zc:wchar_t -Zc:forScope -Yupch.h -FpWin32\\cryptlib\\Debug\\cryptlib-Debug.pch -FoWin32\\cryptlib\\Debug\\casts.obj -FdC:\\Users\\Administrator\\Desktop\\Client_Source\\Srcs\\Extern\\cryptopp\\\\..\\lib\\cryptlib-Debug.pdb -Gd -wd 4231 -wd 4251 -wd 4275 -wd 4355 -wd 4505 -analyze:projectdirectory C:\\Users\\Administrator\\Desktop\\Client_Source\\Srcs\\Extern\\cryptopp -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:none -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29910\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\UnitTest\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/seckey.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "6190cd66825eb0b25009f094513a16f2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/secblock.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "40c5bf9de3db18e7e3441fa533bc2ec2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/blake2b_simd.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "82ee92988124c65a8b8fedc5544681a8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/pch.h"
+          },
+          "hashes": {
+            "md5": "78e983438cc453a5704ffedcba1034f8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/config.h"
+          },
+          "hashes": {
+            "md5": "6a5ca545f96abe3ba21686dc87a11099"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/simple.h"
+          },
+          "hashes": {
+            "md5": "e19aabfd5ffff6a2c25fbbf8c44e82b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cryptlib.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "766efffa36eacbae1c3655900eddbd54"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/stdcpp.h"
+          },
+          "hashes": {
+            "md5": "0a6215a35e90b7b445dfdf33e7ab6b20"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/trap.h"
+          },
+          "hashes": {
+            "md5": "fc59900094cdeb611d690715f574797e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/misc.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "c79d5a3650963f18458369748184f200"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/smartptr.h"
+          },
+          "hashes": {
+            "md5": "e71bf63bd30b8035b276829292fe6c29"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/blake2.h"
+          },
+          "hashes": {
+            "md5": "6f78e7e4e6c4e1015f5b604396131be7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/blake2s_simd.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "c6a79ec75bd53d039fc895d7bb4a9397"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/integer.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "0827b97944d73c9094bd86e93b76dc5e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/blake2.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "6d77bf2b5e15fce9aed74108f19bf4d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/argnames.h"
+          },
+          "hashes": {
+            "md5": "19c1c40761f34ecffc482b2b419986cb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/algparam.h"
+          },
+          "hashes": {
+            "md5": "a46012f5d831663ea173a1ad62f3736c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cpu.h"
+          },
+          "hashes": {
+            "md5": "a4d45571d5e520ccd87615973d22e045"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/bfinit.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "d9e56b611eeef32b4e1a226fd6e17acf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/blowfish.h"
+          },
+          "hashes": {
+            "md5": "91387d7b947a6a5b293dc00b8131441a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/queue.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "567e83fa48f9b6227e23ce3ba87a9912"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/filters.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "6d7374ef2a7d450a154f8f5ccc9d54d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/basecode.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "da4ca2f9eb1b7fc19410f4e6d551820e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/basecode.h"
+          },
+          "hashes": {
+            "md5": "5d7b7afb99d7714e14fb7b74b079997b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/fltrimpl.h"
+          },
+          "hashes": {
+            "md5": "b4703d51a34d36591fce0973f08b7619"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/base64.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "999a82c2757cd2a9c8eb510cd06bbc52"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/base64.h"
+          },
+          "hashes": {
+            "md5": "b3555f32f9dca65a26c7f5a840f11147"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/base32.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "d875bddf46107b34ef8332a779ab8037"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/base32.h"
+          },
+          "hashes": {
+            "md5": "8a963a3e469639204c7c3c2d131bb2a1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/authenc.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "56cdec6637b4625c7fe67f1a4ad2e494"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/authenc.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "f0eb3edfede6d6fb99a3fa43656872cf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/asn.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "799d480014c30d142c759b90f5a4b8cb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/asn.h"
+          },
+          "hashes": {
+            "md5": "fa7937bc5efb52d3cbfe83353a768bd3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/ariatab.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "a27bbf32ab6d8ab5a5a63d1f1218d27d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/aria_simd.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "7e0643aacd300a21fe080000f310ce0f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/aria.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "66803bbc3c57184aab585baaa1bc8b88"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/aria.h"
+          },
+          "hashes": {
+            "md5": "d4719f4a43cee94546a858143996ab07"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/strciphr.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "751296054c68ec0684767093e1033a06"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/arc4.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "10933286bcc37833147c50b200fc53ed"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/arc4.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "36aa57692ee2d27b42fc5b7c342ffa71"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/algparam.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "1ec428a7ec72b5ed740ca246f3f28066"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/algebra.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "e85db8917d090ac666def59502337890"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/algebra.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "5ea39bc55dd9a40c567c5ff2c78018ee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/adler32.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "2f07083fdb274a2cb7806187930f480b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/adler32.h"
+          },
+          "hashes": {
+            "md5": "ea88d2b86192ecb5ed44db14c6123d45"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/3way.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "633334f10c138efa9cc7593d9a11d9ba"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/3way.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "a46e24554fd5eabfbc1c9659de91a55f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/integer.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "47723c222337c57bb684641aa87bbc72"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/modarith.h"
+          },
+          "hashes": {
+            "md5": "0faa959fdf120ddca88151e1dcf08e94"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/nbtheory.h"
+          },
+          "hashes": {
+            "md5": "356df867b20f350438328498b1f06266"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/oids.h"
+          },
+          "hashes": {
+            "md5": "00f7f6c3dc49adc3db8383a6aeece20c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/words.h"
+          },
+          "hashes": {
+            "md5": "9660aabfeab8a05bd52c2004210b1afa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/pubkey.h"
+          },
+          "hashes": {
+            "md5": "74e7dd6e92680708550145ef1f415e64"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/eprecomp.h"
+          },
+          "hashes": {
+            "md5": "286e3fdf86324bf1a27ad9a3900460f2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/fips140.h"
+          },
+          "hashes": {
+            "md5": "d9197fe0788b4cf1724853a23d464c2c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/sha.h"
+          },
+          "hashes": {
+            "md5": "127d193011c50bacb100827b0e16594a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/iterhash.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "f8134743b4cea5385ea6e1b5bd4c822e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cpu.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "0e30075bf8a6be6a1da938471c085b23"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/cryptlib.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "a74a5a2f24d2cb57d2f442ce4a9119a0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/osrng.h"
+          },
+          "hashes": {
+            "md5": "0c08f95d274ace7a1c08acf257032ca2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/randpool.h"
+          },
+          "hashes": {
+            "md5": "6b5bf25ef70357a09e50a8912db37502"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/aes.h"
+          },
+          "hashes": {
+            "md5": "63dc752036147c9f46a3d4b87e2fd73f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/rijndael.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "f2c9939e5c651befd65bb2244afa557f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/rng.h"
+          },
+          "hashes": {
+            "md5": "d98111501f7dd9223de551d2a5a1658c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/dessp.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "5e73c1806b568e1e870d23856b5293a0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/des.h"
+          },
+          "hashes": {
+            "md5": "d1372d3d157e58230b68f862c9a54df0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/des.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "814e174473184ec137f671269f12a2a0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/modes.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "df9c99c14e93518a78dbc2e57ce24007"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/default.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "80b6de5e232a306e1b1564206bf20ade"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/default.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "8a2996cf03e3fcf218e7c3b28ce27c1f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/hmac.h"
+          },
+          "hashes": {
+            "md5": "a6cbab916a76bbb08954dfeef1574f44"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/darn.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "78821855c820fba115f542a29c9e2831"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/darn.h"
+          },
+          "hashes": {
+            "md5": "d867291e8e747efd52d10652d7b37ce6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/crc_simd.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "e02998d1b750a287276a41bfcaa760cb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/crc.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "7a5564c47b5d8c33550ab17381b90478"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/crc.h"
+          },
+          "hashes": {
+            "md5": "4a4a53d509049c80149d43e223dade2f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cmac.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "50de5415f5b5eeee53a26c7c04f40a18"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cmac.h"
+          },
+          "hashes": {
+            "md5": "47f42b96cb2cce049b372bd6c56aeef6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/channels.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "92c1812a285b560b97b8659e812291bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/channels.h"
+          },
+          "hashes": {
+            "md5": "7980da88001a28956c889d90f7882224"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cham_simd.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "e37c369819647ab566c96464b1e4a45c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cham.h"
+          },
+          "hashes": {
+            "md5": "e6b891def99d55c41407c24c0a647633"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/adv_simd.h"
+          },
+          "hashes": {
+            "md5": "c52510f16356af3566ce139a0028d584"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cham.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "d80717800ebe745f2aaed0f67300e858"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/poly1305.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "5edc8709a18eeb4ff56a3a0776755f4f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Administrator/Desktop/Client_Source/Srcs/Extern/cryptopp/chachapoly.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "a4b27756b3607b6fcc78384672cdd3aa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/chachapoly.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "426906bbd3855403e8fb426b3cccad16"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/chacha.h"
+          },
+          "hashes": {
+            "md5": "91b6df1fc3ddc38737026aa4c8904d75"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/chacha_simd.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "ba5986eb022b9288fc02568014efe738"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/chacha.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "b3d87ce5f881c4797a53f4bc85b3f39b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/ccm.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "356c81e56be89e1cedd9034b6ac310e5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/ccm.h"
+          },
+          "hashes": {
+            "md5": "f584f17d3cc2e6a52bc7490e7a4222fd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cbcmac.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "b43b80a8ab36bcf03873fd42eb1a4986"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cbcmac.h"
+          },
+          "hashes": {
+            "md5": "cc8e71263159123cf5d7e14912851be1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/casts.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "01e444938599a163c3b2eca208aad0a1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/administrator/desktop/client_source/srcs/extern/cryptopp/cast.h"
+          },
+          "hashes": {
+            "md5": "0c307c886eff5a7a6f81ec38b2de2456"
+          }
+        }
+      ]
+    }
+  ]
+}
