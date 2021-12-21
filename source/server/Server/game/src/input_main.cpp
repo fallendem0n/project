@@ -3798,43 +3798,22 @@ void CInputMain::TargetInfoLoad(LPCHARACTER ch, const char* c_pData)
 	TPacketCGTargetInfoLoad* p = (TPacketCGTargetInfoLoad*)c_pData;
 	TPacketGCTargetInfo pInfo;
 	pInfo.header = HEADER_GC_TARGET_INFO;
-	static std::vector<LPITEM> s_vec_item;
+	static std::vector<std::pair<int,int> > s_vec_item;
 	s_vec_item.clear();
-	LPITEM pkInfoItem;
 	LPCHARACTER m_pkChrTarget = CHARACTER_MANAGER::instance().Find(p->dwVID);
 	if (!ch || !m_pkChrTarget)
 		return;
 	if (!ch->GetDesc())
 		return;
-	if (ITEM_MANAGER::instance().CreateDropItemVector(m_pkChrTarget, ch, s_vec_item) && (m_pkChrTarget->IsMonster() || m_pkChrTarget->IsStone()))
+	if ((m_pkChrTarget->IsMonster() || m_pkChrTarget->IsStone()) && ITEM_MANAGER::instance().CreateDropItemVector(m_pkChrTarget, ch, s_vec_item))
 	{
-		if (s_vec_item.size() == 0);
-		else if (s_vec_item.size() == 1)
+		for(std::vector<std::pair<int,int> >::const_iterator iter = s_vec_item.begin(); iter != s_vec_item.end();++iter)
 		{
-			pkInfoItem = s_vec_item[0];
-			pInfo.dwVID = m_pkChrTarget->GetVID();
+			pInfo.dwVID	= m_pkChrTarget->GetVID();
 			pInfo.race = m_pkChrTarget->GetRaceNum();
-			pInfo.dwVnum = pkInfoItem->GetVnum();
-			pInfo.count = pkInfoItem->GetCount();
+			pInfo.dwVnum = iter->first;
+			pInfo.count = iter->second;
 			ch->GetDesc()->Packet(&pInfo, sizeof(TPacketGCTargetInfo));
-		}
-		else
-		{
-			int iItemIdx = s_vec_item.size() - 1;
-			while (iItemIdx >= 0)
-			{
-				pkInfoItem = s_vec_item[iItemIdx--];
-				if (!pkInfoItem)
-				{
-					sys_err("pkInfoItem null in vector idx %d", iItemIdx + 1);
-					continue;
-				}
-				pInfo.dwVID = m_pkChrTarget->GetVID();
-				pInfo.race = m_pkChrTarget->GetRaceNum();
-				pInfo.dwVnum = pkInfoItem->GetVnum();
-				pInfo.count = pkInfoItem->GetCount();
-				ch->GetDesc()->Packet(&pInfo, sizeof(TPacketGCTargetInfo));
-			}
 		}
 	}
 }

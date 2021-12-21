@@ -840,13 +840,40 @@ int GetDropPerKillPct(int iMinimum, int iDefault, int iDeltaPercent, const char 
 }
 
 #ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-bool ITEM_MANAGER::CreateDropItemVector(LPCHARACTER pkChr, LPCHARACTER pkKiller, std::vector<LPITEM>& vec_item)
+bool ITEM_MANAGER::CreateDropItemVector(LPCHARACTER pkChr, LPCHARACTER pkKiller, std::vector<std::pair<int,int> > & vec_item)
 {
 	if (pkChr->IsPolymorphed() || pkChr->IsPC())
 		return false;
 
 	int iLevel = pkKiller->GetLevel();
-	LPITEM item = NULL;
+
+	BYTE bRank = pkChr->GetMobRank();
+
+	std::vector<CItemDropInfo>::iterator it = g_vec_pkCommonDropItem[bRank].begin();
+
+		while (it != g_vec_pkCommonDropItem[bRank].end())
+	{
+		const CItemDropInfo & c_rInfo = *(it++);
+
+		if (iLevel < c_rInfo.m_iLevelStart || iLevel > c_rInfo.m_iLevelEnd)
+			continue;
+
+		TItemTable * table = GetTable(c_rInfo.m_dwVnum);
+
+		if (!table)
+			continue;
+
+		if(c_rInfo.m_dwVnum > 70103 && c_rInfo.m_dwVnum < 70108)
+		{	
+			
+			if (c_rInfo.m_dwVnum != pkChr->GetPolymorphItemVnum())
+			{
+				continue;
+			}
+		}
+
+		vec_item.push_back(std::make_pair(c_rInfo.m_dwVnum, 1));
+	}
 
 	// Drop Item Group
 	{
@@ -855,24 +882,11 @@ bool ITEM_MANAGER::CreateDropItemVector(LPCHARACTER pkChr, LPCHARACTER pkKiller,
 
 		if (it != m_map_pkDropItemGroup.end())
 		{
-			decltype(it->second->GetVector()) v = it->second->GetVector();
+			typeof(it->second->GetVector()) v = it->second->GetVector();
 
 			for (DWORD i = 0; i < v.size(); ++i)
 			{
-				item = CreateItem(v[i].dwVnum, v[i].iCount, 0, true);
-
-				if (item)
-				{
-					if (item->GetType() == ITEM_POLYMORPH)
-					{
-						if (item->GetVnum() == pkChr->GetPolymorphItemVnum())
-						{
-							item->SetSocket(0, pkChr->GetRaceNum());
-						}
-					}
-
-					vec_item.push_back(item);
-				}
+				vec_item.push_back(std::make_pair(v[i].dwVnum, v[i].iCount));
 			}
 		}
 	}
@@ -890,9 +904,7 @@ bool ITEM_MANAGER::CreateDropItemVector(LPCHARACTER pkChr, LPCHARACTER pkKiller,
 			if (pGroup && !pGroup->IsEmpty())
 			{
 				const CMobItemGroup::SMobItemGroupInfo& info = pGroup->GetOne();
-				item = CreateItem(info.dwItemVnum, info.iCount, 0, true, info.iRarePct);
-
-				if (item) vec_item.push_back(item);
+				vec_item.push_back(std::make_pair(info.dwItemVnum, info.iCount));
 			}
 			// END_OF_MOB_DROP_ITEM_BUG_FIX
 		}
@@ -907,56 +919,34 @@ bool ITEM_MANAGER::CreateDropItemVector(LPCHARACTER pkChr, LPCHARACTER pkKiller,
 		{
 			if (it->second->GetLevelLimit() <= (DWORD)iLevel)
 			{
-				decltype(it->second->GetVector()) v = it->second->GetVector();
+				typeof(it->second->GetVector()) v = it->second->GetVector();
 
 				for (DWORD i = 0; i < v.size(); i++)
 				{
 					DWORD dwVnum = v[i].dwVNum;
-					item = CreateItem(dwVnum, v[i].iCount, 0, true);
-					if (item) vec_item.push_back(item);
+					vec_item.push_back(std::make_pair(dwVnum, v[i].iCount));
 				}
 			}
 		}
 	}
 
-	// BuyerTheitGloves Item Group
-	{
-		if (pkKiller->GetPremiumRemainSeconds(PREMIUM_ITEM) > 0 ||
-			pkKiller->IsEquipUniqueGroup(UNIQUE_GROUP_DOUBLE_ITEM))
-		{
-			itertype(m_map_pkGloveItemGroup) it;
-			it = m_map_pkGloveItemGroup.find(pkChr->GetRaceNum());
-
-			if (it != m_map_pkGloveItemGroup.end())
-			{
-				decltype(it->second->GetVector()) v = it->second->GetVector();
-
-				for (DWORD i = 0; i < v.size(); ++i)
-				{
-					DWORD dwVnum = v[i].dwVnum;
-					item = CreateItem(dwVnum, v[i].iCount, 0, true);
-					if (item) vec_item.push_back(item);
-				}
-			}
-		}
-	}
+	// ETC DropItem
 	if (pkChr->GetMobDropItemVnum())
 	{
 		itertype(m_map_dwEtcItemDropProb) it = m_map_dwEtcItemDropProb.find(pkChr->GetMobDropItemVnum());
 
 		if (it != m_map_dwEtcItemDropProb.end())
-		{
-			item = CreateItem(pkChr->GetMobDropItemVnum(), 1, 0, true);
-			if (item) vec_item.push_back(item);
+		{		
+			vec_item.push_back(std::make_pair(pkChr->GetMobDropItemVnum(), 1));
 		}
 	}
 
+	//Metin
 	if (pkChr->IsStone())
 	{
 		if (pkChr->GetDropMetinStoneVnum())
 		{
-			item = CreateItem(pkChr->GetDropMetinStoneVnum(), 1, 0, true);
-			if (item) vec_item.push_back(item);
+			vec_item.push_back(std::make_pair(pkChr->GetDropMetinStoneVnum(), 1));
 		}
 	}
 

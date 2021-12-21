@@ -6773,12 +6773,9 @@ void CHARACTER::DetermineDropMetinStone()
 		return;
 	}
 #endif
-
+	const int METIN_STONE_NUM = 14;
 	static const DWORD c_adwMetin[] =
 	{
-// #if defined(ENABLE_WOLFMAN_CHARACTER) && defined(USE_WOLFMAN_STONES)
-// 		28012,
-// #endif
 		28030,
 		28031,
 		28032,
