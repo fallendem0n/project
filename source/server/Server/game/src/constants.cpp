@@ -45,45 +45,12 @@ const TMobRankStat MobRankStats[MOB_RANK_MAX_NUM] =
 const DWORD FireRingAttrTable[2][3] =
 {
 	// { ATTR, StartBonus, Counter},	
-	{ 1, 1000, 100},  // Attr1
-	{ 99, 100, 1},  // Attr2 Metin
+	{ 99, 1, 1},  // Attr1 Metin
+	{ 63, 1, 1},  // Attr2 Canavar
 };
 
 const DWORD FireRingExpTable[21] =
 {
-	10,	// 0
-	20,	// 1
-	30,
-	40,
-	50,
-	60,
-	70,
-	80,
-	90,
-	100,
-	125,	// 10
-	150,
-	175,
-	200,
-	225,
-	250,
-	275,
-	300,
-	350,
-	400,
-	500	// 20
-};
-
-const DWORD IceRingAttrTable[2][3] =
-{
-	// { ATTR, StartBonus, Counter},	
-	{ 1, 1000, 100},  // Attr1
-	{ 100, 1, 2},  // Attr2
-};
-
-const DWORD IceRingExpTable[21] =
-{
-	
 	100,	// 0
 	200,	// 1
 	300,
@@ -94,17 +61,50 @@ const DWORD IceRingExpTable[21] =
 	800,
 	900,
 	1000,
-	1250,	// 10
-	1500,
-	1750,
+	1200,	// 10
+	1400,
+	1600,
+	1800,
 	2000,
-	2250,
-	2500,
-	2750,
+	2200,
+	2400,
+	2600,
+	2800,
 	3000,
-	3500,
-	4000,
-	5000	// 20
+	3200	// 20
+};
+
+const DWORD IceRingAttrTable[2][3] =
+{
+	// { ATTR, StartBonus, Counter},	
+	{ 100, 1, 1},  // Attr1 patron
+	{ 101, 1, 1},  // Attr2 zindan
+};
+
+const DWORD IceRingExpTable[21] =
+{
+	
+	10,	// 0
+	20,	// 1
+	30,
+	40,
+	50,
+	60,
+	70,
+	80,
+	90,
+	100,
+	120,	// 10
+	150,
+	175,
+	200,
+	225,
+	250,
+	275,
+	300,
+	350,
+	400,
+	500	// 20
 };
 
 
@@ -958,7 +958,7 @@ const int aiChainLightningCountBySkillLevel_euckr[SKILL_MAX_LEVEL+1] =
 
 const SStoneDropInfo aStoneDrop[STONE_INFO_MAX_NUM] =
 {
-	//  mob		pct	{+0	+1	+2	+3	+4}
+	// mob		pct	{+0	+1	+2	+3	+4}
 	{8005,	60,	{30,	30,	30,	9,	1}	},
 	{8006,	60,	{28,	29,	31,	11,	1}	},
 	{8007,	60,	{24,	29,	32,	13,	2}	},

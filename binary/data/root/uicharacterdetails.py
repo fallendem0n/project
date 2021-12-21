@@ -81,7 +81,7 @@ class CharacterDetailsUI(ui.ScriptWindow):
 		self.InfoList.append( [ localeInfo.DETAILS_5, localeInfo.DETAILS_TOOLTIP_5, 53 ] )
 		self.InfoList.append( [ "Metinlere Kar. Guc", "Metinlere Kar. Guc", 146 ] )
 		self.InfoList.append( [ "Patronlara Kar. Guc", "Patronlara Kar. Guc", 147 ] )
-		self.InfoList.append( [ "Zindalara Kar. Guc", "Patronlara Kar. Guc", 148 ] )
+		self.InfoList.append( [ "Zindalara Kar. Guc", "Zindan Kar. Guc", 148 ] )
 		# if app.ENABLE_ELEMENT_ADD:
 			# self.InfoList.append( [ localeInfo.DETAILS_6, localeInfo.DETAILS_TOOLTIP_6, item.APPLY_ATTBONUS_CZ ] )
 			
