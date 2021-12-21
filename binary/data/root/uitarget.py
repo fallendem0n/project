@@ -14,6 +14,7 @@ if app.ENABLE_TARGET_INFORMATION_SYSTEM:
 	import uiToolTip
 	def HAS_FLAG(value, flag):
 		return (value & flag) == flag
+MONSTER_INFO_DATA = {}
 
 class TargetBoard(ui.ThinBoard):
 
@@ -249,8 +250,8 @@ class TargetBoard(ui.ThinBoard):
 			def __LoadInformation_Drops(self, race):
 				self.AppendSeperator()
 
-				if race in constInfo.MONSTER_INFO_DATA:
-					if len(constInfo.MONSTER_INFO_DATA[race]["items"]) == 0:
+				if race in MONSTER_INFO_DATA:
+					if len(MONSTER_INFO_DATA[race]["items"]) == 0:
 						self.wndItem.Hide()
 					else:
 						self.wndItem.SetPosition(10, self.yPos - 7)
@@ -259,7 +260,7 @@ class TargetBoard(ui.ThinBoard):
 						self.UpdateRect()
 						self.wndItem.Show()
 
-						for curItem in constInfo.MONSTER_INFO_DATA[race]["items"]:
+						for curItem in MONSTER_INFO_DATA[race]["items"]:
 							getItemID = 0
 							if curItem.has_key("vnum_list"):
 								getItemID = curItem["vnum_list"][0]

@@ -3,6 +3,7 @@
 """
 import dbg
 import app
+import uiTarget
 import net
 import ui
 import ime
@@ -302,6 +303,7 @@ class LoginWindow(ui.ScriptWindow):
 		
 		self.stream.popupWindow.Close()
 		self.stream.popupWindow.Open(localeInfo.LOGIN_CONNETING, self.PassFunc, localeInfo.UI_CANCEL)
+		uiTarget.MONSTER_INFO_DATA.clear()
 		
 		self.stream.SetLoginInfo(id, pwd)
 		self.stream.Connect()

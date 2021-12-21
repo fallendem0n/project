@@ -2619,10 +2619,10 @@ class GameWindow(ui.ScriptWindow):
 
 	if app.ENABLE_TARGET_INFORMATION_SYSTEM:
 		def BINARY_AddTargetMonsterDropInfo(self, raceNum, itemVnum, itemCount):
-			if not raceNum in constInfo.MONSTER_INFO_DATA:
-				constInfo.MONSTER_INFO_DATA.update({raceNum : {}})
-				constInfo.MONSTER_INFO_DATA[raceNum].update({"items" : []})
-			curList = constInfo.MONSTER_INFO_DATA[raceNum]["items"]
+			if not raceNum in uiTarget.MONSTER_INFO_DATA:
+				uiTarget.MONSTER_INFO_DATA.update({raceNum : {}})
+				uiTarget.MONSTER_INFO_DATA[raceNum].update({"items" : []})
+			curList = uiTarget.MONSTER_INFO_DATA[raceNum]["items"]
 
 			isUpgradeable = False
 			isMetin = False

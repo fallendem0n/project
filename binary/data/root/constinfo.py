@@ -232,8 +232,6 @@ import net
 
 
 ########################
-if app.ENABLE_TARGET_INFORMATION_SYSTEM:
-	MONSTER_INFO_DATA = {}
 	
 if app.ENABLE_SPECIAL_STORAGE:
 	SpecialInventoryMode=0
