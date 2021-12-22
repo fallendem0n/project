@@ -567,7 +567,7 @@ DO_YOU_BUY_ITEM2_CHEQUE	Satýn almak istiyor musun? %s (%s lots) for %s Won and %
 DO_YOU_DROP_CHEQUE	Do you want drop %d Won?
 DO_YOU_BUY_ITEM1_CHEQUE1	Satýn almak istiyor musun? %s for %s and 0 Yang?
 DO_YOU_BUY_ITEM2_CHEQUE1	Satýn almak istiyor musun? %s (%s lots) for %s and 0 Yang?
-NPC_0YANG_UCRETSIZ	[Ucretsiz]
+NPC_0YANG_UCRETSIZ	0 Yang
 ACCE_REFINE_COST	Emiþ fiyatý: %s
 ACCE_ABSORB_CHANCE	Emiþ Derecesi: %d%%
 ACCE_ABSORB_CHANCE2	Emiþ Derecesi: %d%% ~ %d%%

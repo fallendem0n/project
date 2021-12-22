@@ -464,9 +464,12 @@ void CPythonChat::AppendChat(int iType, const char * c_szChat)
 	m_ChatLineDeque.push_back(pChatLine);
 	if (m_ChatLineDeque.size() > CHAT_LINE_MAX_NUM)
 	{
-		SChatLine * pChatLine = m_ChatLineDeque.front();
-		SChatLine::Delete(pChatLine);
-		m_ChatLineDeque.pop_front();
+		SChatLine* pChatLine = m_ChatLineDeque.front();
+		if (pChatLine)
+			SChatLine::Delete(pChatLine);
+		assert(!m_ChatLineDeque.empty());
+		m_ChatLineDeque.front() = std::move(m_ChatLineDeque.back());
+		m_ChatLineDeque.pop_back();
 	}
 
 	for (TChatSetMap::iterator itor = m_ChatSetMap.begin(); itor != m_ChatSetMap.end(); ++itor)

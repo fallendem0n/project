@@ -559,6 +559,9 @@ void ITEM_MANAGER::RemoveItem(LPITEM item, const char * c_pszReason)
 		// END_OF_SAFEBOX_TIME_LIMIT_ITEM_BUG_FIX
 		else
 		{
+#ifdef ENABLE_SPECIAL_STORAGE
+			if (!item->IsUpgradeItem() && !item->IsBook() && !item->IsStone())
+#endif
 			o->SyncQuickslot(QUICKSLOT_TYPE_ITEM, item->GetCell(), 255);
 			item->RemoveFromCharacter();
 		}

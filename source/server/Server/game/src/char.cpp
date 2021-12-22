@@ -220,6 +220,9 @@ void CHARACTER::Initialize()
 {
 	CEntity::Initialize(ENTITY_CHARACTER);
 
+	iWarpTime = 0;
+	itemPushTime = 0;
+
 	m_bNoOpenedShop = true;
 
 	m_bOpeningSafebox = false;
@@ -5863,6 +5866,8 @@ bool CHARACTER::WarpSet(long x, long y, long lPrivateMapIndex)
 	snprintf(buf, sizeof(buf), "%s MapIdx %ld DestMapIdx%ld DestX%ld DestY%ld Empire%d", GetName(), GetMapIndex(), lPrivateMapIndex, x, y, GetEmpire());
 	LogManager::instance().CharLog(this, 0, "WARP", buf);
 
+	iWarpTime = thecore_pulse();
+
 	return true;
 }
 
@@ -6977,6 +6982,9 @@ namespace {
 				if (!pkChr->CanHandleItem(false, true))
 					return;
 
+				if ((thecore_pulse() - pkChr->itemPushTime) < PASSES_PER_SEC(10))
+					return;
+
 				if (m_bUseWarp)
 					pkChr->WarpSet(m_lTargetX, m_lTargetY);
 				else
@@ -7337,6 +7345,8 @@ bool CHARACTER::IsHack(bool bSendMsg, bool bCheckShopOwner, int limittime)
 		return true;
 	}
 	//END_PREVENT_ITEM_COPY
+	if ((thecore_pulse() - iWarpTime) < PASSES_PER_SEC(10))
+		return true;
 
 	return false;
 }

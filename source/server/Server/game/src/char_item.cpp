@@ -257,6 +257,11 @@ bool CHARACTER::CanHandleItem(bool bSkipCheckRefine, bool bSkipObserver)
 	if ((m_bAcceCombination) || (m_bAcceAbsorption))
 		return false;
 #endif
+	if ((thecore_pulse() - iWarpTime) < PASSES_PER_SEC(10))
+		return false;
+
+	itemPushTime = thecore_pulse();
+
 	return true;
 }
 
@@ -2168,7 +2173,6 @@ bool CHARACTER::UseItemEx(LPITEM item, TItemPos DestCell)
 				break;
 		}
 	}
-
 	if (test_server)
 	{
 		sys_log(0, "USE_ITEM %s, Inven %d, Cell %d, ItemType %d, SubType %d", item->GetName(), bDestInven, wDestCell, item->GetType(), item->GetSubType());
@@ -2186,14 +2190,17 @@ bool CHARACTER::UseItemEx(LPITEM item, TItemPos DestCell)
 		return false;
 	}
 #endif
-
+	if (!CanHandleItem())
+	{
+		ChatPacket(CHAT_TYPE_INFO, "Not Yet");
+		return false;
+	}
 	// @fixme402 (IsLoadedAffect to block affect hacking)
 	if (!IsLoadedAffect())
 	{
 		ChatPacket(CHAT_TYPE_INFO, "Affects are not loaded yet!");
 		return false;
 	}
-
 	// @fixme141 BEGIN
 	if (TItemPos(item->GetWindow(), item->GetCell()).IsBeltInventoryPosition())
 	{
@@ -3566,6 +3573,10 @@ bool CHARACTER::UseItemEx(LPITEM item, TItemPos DestCell)
 							case 71013: 
 								CreateFly(number(FLY_FIREWORK1, FLY_FIREWORK6), this);
 								item->SetCount(item->GetCount() - 1);
+								break;
+
+							case 50513:
+								ChatPacket(CHAT_TYPE_COMMAND, "ruhtasiekranac");
 								break;
 
 #ifdef ENABLE_REMOTE_SHOP_SYSTEM

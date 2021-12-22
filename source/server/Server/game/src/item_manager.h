@@ -232,6 +232,14 @@ class CMobItemGroup
 		{
 			return m_vecItems[GetOneIndex()];
 		}
+		std::vector<std::pair<int,int>> GetVector()
+		{
+			std::vector<std::pair<int,int>> item_list;
+			for(auto &x : m_vecItems)
+				item_list.emplace_back(std::make_pair(x.dwItemVnum,x.iCount));
+
+			return item_list;			
+		}
 
 	private:
 		DWORD m_dwMobVnum;

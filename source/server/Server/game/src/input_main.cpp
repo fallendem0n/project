@@ -3271,17 +3271,23 @@ void CInputMain::ChestDropInfo(LPCHARACTER ch, const char* c_pData)
 {
 	TPacketCGChestDropInfo* p = (TPacketCGChestDropInfo*) c_pData;
 
-	if(p->wInventoryCell >= INVENTORY_MAX_NUM)
+	if (!ch)
+		return;
+
+	if (!c_pData)
+		return;
+
+	if(p->wInventoryCell >= INVENTORY_AND_EQUIP_SLOT_MAX)
 		return;
 	
 	LPITEM pkItem = ch->GetInventoryItem(p->wInventoryCell);
-
 	if (!pkItem)
 		return;
-	
+
 	std::vector<TChestDropInfoTable> vec_ItemList;
 	ITEM_MANAGER::instance().GetChestItemList(pkItem->GetVnum(), vec_ItemList);
-
+	if (vec_ItemList.size() == 0)
+		return;
 	TPacketGCChestDropInfo packet;
 	packet.bHeader = HEADER_GC_CHEST_DROP_INFO;
 	packet.wSize = sizeof(packet) + sizeof(TChestDropInfoTable) * vec_ItemList.size();
@@ -3835,6 +3841,13 @@ int CInputMain::Analyze(LPDESC d, BYTE bHeader, const char * c_pData)
 	if (test_server && bHeader != HEADER_CG_MOVE)
 		sys_log(0, "CInputMain::Analyze() ==> Header [%d] ", bHeader);
 
+	if (ch->GetDesc()->GetPhase() != PHASE_GAME && ch->GetDesc()->GetPhase() != PHASE_DEAD)
+	{
+		sys_err("no character in game");
+		sys_log(0, "no character in game %u %u %u", ch->GetPlayerID(), ch->GetDesc()->GetPhase(), bHeader);
+		d->SetPhase(PHASE_CLOSE);
+		return (0);
+	}
 	switch (bHeader)
 	{
 		case HEADER_CG_PONG:

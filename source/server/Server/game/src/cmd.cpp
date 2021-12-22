@@ -10,6 +10,7 @@
 ACMD(do_user_horse_ride);
 ACMD(do_user_horse_back);
 ACMD(do_user_horse_feed);
+ACMD(do_ruhoku);
 #ifdef ENABLE_RONARK_SYSTEM
 ACMD(do_ronark);
 #endif
@@ -596,6 +597,8 @@ struct command_info cmd_info[] =
 	{ "horse_summon",	do_horse_summon,	0,			POS_DEAD,	GM_HIGH_WIZARD	},
 	{ "horse_unsummon",	do_horse_unsummon,	0,			POS_DEAD,	GM_HIGH_WIZARD	},
 	{ "horse_set_stat", do_horse_set_stat,	0,			POS_DEAD,	GM_HIGH_WIZARD	},
+
+	{ "ruhoku",	do_ruhoku,	0,	POS_DEAD,	GM_PLAYER	},
 
 	{ "pcbang_update", 	do_pcbang_update,	0,			POS_DEAD,	GM_LOW_WIZARD	},
 	{ "pcbang_check", 	do_pcbang_check,	0,			POS_DEAD,	GM_LOW_WIZARD	},

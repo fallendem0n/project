@@ -1,0 +1,9 @@
+﻿  StdAfx.cpp
+  PythonDebugModule.cpp
+  PythonLauncher.cpp
+  PythonMarshal.cpp
+  PythonUtils.cpp
+  Resource.cpp
+C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterLib\SkyBox.h(108,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
+  Kod Üretiliyor...
+  scriptLib.vcxproj -> C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\scriptLib\Distribute\scriptLib.lib

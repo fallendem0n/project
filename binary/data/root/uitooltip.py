@@ -1949,8 +1949,7 @@ class ItemToolTip(ToolTip):
 
 	def AppendPrice(self, price):
 		if app.ENABLE_CHEQUE_SYSTEM:
-			if price <=0:
-				self.AppendTextLine("[?retsiz]", self.POSITIVE_COLOR)
+			if price <0:
 				self.AppendSpace(5)
 				return
 			self.AppendTextLine(localeInfo.CHEQUE_SYSTEM_YANG  % (localeInfo.NumberToMoneyString(price)), self.GetPriceColor(price))

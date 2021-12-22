@@ -1,0 +1,15 @@
+﻿  StdAfx.cpp
+  PythonGridSlotWindow.cpp
+  PythonSlotWindow.cpp
+  PythonWindow.cpp
+C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterPythonLib\PythonWindow.cpp(1566,47): warning C4267: '=': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
+  PythonWindowManager.cpp
+  PythonWindowManagerModule.cpp
+  PythonGraphic.cpp
+C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterPythonLib\PythonGraphic.cpp(352,5): warning C4838: 'int ile 'unsigned char arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
+  PythonGraphicImageModule.cpp
+  PythonGraphicModule.cpp
+  PythonGraphicTextModule.cpp
+  PythonGraphicThingModule.cpp
+  Kod Üretiliyor...
+  eterPythonLib.vcxproj -> C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterPythonLib\Distribute\eterPythonLib.lib

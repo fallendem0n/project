@@ -2393,6 +2393,9 @@ public:
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
 		bool	zehirledim;
 #endif
+	public:
+		int					iWarpTime;
+		int					itemPushTime;
 };
 
 ESex GET_SEX(LPCHARACTER ch);

@@ -254,6 +254,294 @@ ACMD(do_remove_item_system_close)
 }
 #endif
 
+LPEVENT ruhtimer = NULL;
+
+EVENTINFO(TMainEventInfo)
+{
+	LPCHARACTER	kim;	
+	long skillindexx;	
+	
+	TMainEventInfo() 
+	: kim( NULL )
+	, skillindexx( 0 )
+	{
+	}
+
+} ;
+
+EVENTFUNC(ruh_event)
+{
+	TMainEventInfo * info = dynamic_cast<TMainEventInfo *>(  event->info );
+
+	if ( info == NULL )
+	{
+		sys_err( "ruh_event> <Factor> Null pointer" );
+		return 0;
+	}
+	
+	LPCHARACTER	ch = info->kim;
+	long skillindex = info->skillindexx;
+	
+	if (NULL == ch || skillindex == 0)
+		return 0;
+	
+	if(ch->CountSpecifyItem(50513) < 1 )
+	{
+		ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhtasiyok"));
+		return 0;
+	}
+	
+	
+	
+	
+	int skilllevel = ch->GetSkillLevel(skillindex);
+
+	if (skilllevel >= 40)
+	{
+		ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhskillson"));
+		return 0;
+	}
+	int gerekenderece = (1000+500*(skilllevel-30));
+	int derecem = (ch->GetRealAlignment()/10);
+	int sonuc = (-19000+gerekenderece);
+	if (derecem < 0)
+	{
+		gerekenderece = gerekenderece*2;
+		sonuc = (-19000-gerekenderece);
+	}
+	if (derecem > sonuc)
+	{
+		// int gerekliknk = sonuc-derecem;
+		int gerekliknk = gerekenderece;
+		int kactane = gerekliknk/500;
+		if (kactane < 0)
+		{
+			kactane = 0 - kactane;
+		}
+		
+		if (derecem < 0)
+		{
+			if (ch->CountSpecifyItem(70102) < kactane)
+			{
+				ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhzenbitti %d"),kactane);
+				return 0;
+			}
+			
+			int delta = MIN(-(ch->GetAlignment()), 500);
+			ch->UpdateAlignment(delta*kactane);
+			ch->RemoveSpecifyItem(70102,kactane);
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhzenbastim"));
+		}
+	}
+		
+	if(ch->GetQuestFlag("ruh.sure") > get_global_time())
+	{
+		if (ch->CountSpecifyItem(71001) < 1 )
+		{
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhsuredolmadi"));
+			return 0;
+		}
+		else
+		{
+			ch->RemoveSpecifyItem(71001,1);
+		}
+			
+	}
+	
+	if (ch->CountSpecifyItem(71094) >= 1)
+	{
+		ch->AddAffect(512, aApplyInfo[0].bPointType, 0, 0, 536870911, 0, false);
+		ch->RemoveSpecifyItem(71094,1);
+		ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhmunzevikullandim"));
+	}
+	
+	if (gerekenderece < 0)
+	{
+		ch->UpdateAlignment(gerekenderece*10);
+	}
+	else
+	{
+		ch->UpdateAlignment(-gerekenderece*10);
+	}
+	ch->LearnGrandMasterSkill(skillindex);
+	ch->RemoveSpecifyItem(50513,1);
+	ch->SetQuestFlag("ruh.sure",get_global_time()+60*60*24);
+
+	return 1;
+}
+
+ACMD(do_ruhoku)
+{
+	int gelen;
+	long skillindex;
+	char arg1[256], arg2[256];
+	
+	two_arguments(argument, arg1, sizeof(arg1), arg2, sizeof(arg2));
+	str_to_number(gelen, arg1);
+	str_to_number(skillindex, arg2);
+	
+	if (!ch)
+		return;
+ 
+	if (!ch->IsPC())
+		return;
+ 
+    if (ch->IsDead() || ch->IsStun())
+		return;
+ 
+	if (ch->IsHack())
+		return;
+	
+	
+	if(ch->GetExchange() || ch->GetMyShop() || ch->GetShopOwner() || ch->IsOpenSafebox() || ch->IsCubeOpen())
+	{
+		ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("?? ???(??,??,??)?? ????? ??? ? ????."));
+		return;
+	}
+	
+	
+	
+	if(ch->CountSpecifyItem(50513) < 1 )
+	{
+		ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhtasiyok"));
+		return;
+	}
+	
+	LPITEM slot1 = ch->GetWear(WEAR_UNIQUE1);
+	LPITEM slot2 = ch->GetWear(WEAR_UNIQUE2);
+	
+	if (NULL != slot1)
+	{
+		if (slot1->GetVnum() == 70048)
+		{
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("pelerin_cikar"));
+			return;
+		}
+	}
+	if (NULL != slot2)
+	{
+		if (slot2->GetVnum() == 70048)
+		{
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("pelerin_cikar"));
+			return;
+		}
+	}
+	
+	int skillgrup = ch->GetSkillGroup();
+	if (skillgrup == 0)
+	{
+		ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhokuyamazsin"));
+		return;
+	}
+	
+	
+	
+	if (gelen == 1) ///tek
+	{
+		int skilllevel = ch->GetSkillLevel(skillindex);
+		int gerekenderece = (1000+500*(skilllevel-30));
+		int derecem = (ch->GetRealAlignment()/10);
+		int sonuc = (-19000+gerekenderece);
+		
+		if (ch->GetQuestFlag("ruh.yenisure") > get_global_time())
+		{
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruh1sn"));
+			return;
+		}
+		
+		
+		if (derecem < 0)
+		{
+			gerekenderece = gerekenderece*2;
+			sonuc = (-19000-gerekenderece);
+		}
+		if (derecem > sonuc)
+		{
+			
+			// int gerekliknk = sonuc-derecem;
+			int gerekliknk = gerekenderece;
+			int kactane = gerekliknk/500;
+			if (kactane < 0)
+			{
+				kactane = 0 - kactane;
+			}
+			
+			if (derecem < 0)
+			{
+				if (ch->CountSpecifyItem(70102) < kactane)
+				{
+					ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhzenbitti %d"),kactane);
+					return;
+				}
+				
+				int delta = MIN(-(ch->GetAlignment()), 500);
+				ch->UpdateAlignment(delta*kactane);
+				ch->RemoveSpecifyItem(70102,kactane);
+				ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhzenbastim"));
+			}
+		}
+
+		
+		if(ch->GetQuestFlag("ruh.sure") > get_global_time())
+		{
+			if (ch->CountSpecifyItem(71001) < 1 )
+			{
+				ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhsuredolmadi"));
+				return;
+			}
+			else
+			{
+				ch->RemoveSpecifyItem(71001,1);
+			}
+				
+		}
+		if (skilllevel >= 40)
+		{
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("beceri zaten perfect"));
+			return;
+		}
+		
+		if (ch->CountSpecifyItem(71094) >= 1)
+		{
+			ch->AddAffect(512, aApplyInfo[0].bPointType, 0, 0, 536870911, 0, false);
+			ch->RemoveSpecifyItem(71094,1);
+			ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ruhmunzevikullandim"));
+		}
+		
+		if (gerekenderece < 0)
+		{
+			ch->UpdateAlignment(gerekenderece*10);
+		}
+		else
+		{
+			ch->UpdateAlignment(-gerekenderece*10);
+		}
+		
+		ch->LearnGrandMasterSkill(skillindex);
+		ch->RemoveSpecifyItem(50513,1);
+		ch->SetQuestFlag("ruh.sure",get_global_time()+60*60*24);
+		ch->SetQuestFlag("ruh.yenisure",get_global_time()+1);
+		
+
+	}
+	else if(gelen == 0) ///hepsi
+	{
+		
+		if (ruhtimer)
+		{
+			event_cancel(&ruhtimer);
+		}
+		
+		TMainEventInfo* info = AllocEventInfo<TMainEventInfo>();
+		
+		
+		info->kim = ch;
+		info->skillindexx = skillindex;
+		ruhtimer = event_create(ruh_event, info, PASSES_PER_SEC(1));
+	}
+	return;
+}
+
 ACMD(do_user_horse_ride)
 {
 	if (ch->IsObserverMode())

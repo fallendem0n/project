@@ -130,7 +130,16 @@ class LoadingWindow(ui.ScriptWindow):
 
 		try:
 			imgFileName = imgFileNameDict[app.GetRandom(0, len(imgFileNameDict) - 1)]
-			self.loadingImage.LoadImage(imgFileName)
+			if constInfo.LOAD_CURTAIN == 1:
+				self.loadingImage.LoadImage(imgFileName)
+				self.GetChild("GageBoard").Show()
+				self.GetChild("Top_Line").Show() ## E?er bu bloklar©¥ kullanm©¥yorsan©¥z silin.
+				self.GetChild("Bottom_Line").Show() ## E?er bu bloklar©¥ kullanm©¥yorsan©¥z silin.
+			else:
+				self.loadingImage.Hide()
+				self.GetChild("GageBoard").Hide()
+				self.GetChild("Top_Line").Hide() ## E?er bu bloklar©¥ kullanm©¥yorsan©¥z silin.
+				self.GetChild("Bottom_Line").Hide() ## E?er bu bloklar©¥ kullanm©¥yorsan©¥z silin.
 
 		except:
 			print "LoadingWindow.Open.LoadImage - %s File Load Error" % (imgFileName)

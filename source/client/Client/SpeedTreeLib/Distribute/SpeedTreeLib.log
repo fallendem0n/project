@@ -1,0 +1,11 @@
+﻿  StdAfx.cpp
+  BoundaryShapeManager.cpp
+  SpeedGrassRT.cpp
+  SpeedGrassWrapper.cpp
+  SpeedTreeForest.cpp
+  SpeedTreeForestDirectX8.cpp
+C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\SpeedTreeLib\VertexShaders.h(171,23): warning C4477: 'sprintf' : '%s' biçim dizesi 'char *' türü bir bağımsız değişken gerektirir, ancak 1 değişen sayıda bağımsız değişkenin türü 'LPVOID'
+  SpeedTreeWrapper.cpp
+C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\SpeedTreeLib\VertexShaders.h(171,23): warning C4477: 'sprintf' : '%s' biçim dizesi 'char *' türü bir bağımsız değişken gerektirir, ancak 1 değişen sayıda bağımsız değişkenin türü 'LPVOID'
+  Kod Üretiliyor...
+  SpeedTreeLib.vcxproj -> C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\SpeedTreeLib\Distribute\SpeedTreeLib.lib

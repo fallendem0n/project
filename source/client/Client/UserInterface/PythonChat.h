@@ -26,7 +26,7 @@ class CWhisper
 			static CDynamicPool<SChatLine> ms_kPool;
 		} TChatLine;
 
-		typedef std::deque<TChatLine*> TChatLineDeque;
+		typedef std::vector<TChatLine*> TChatLineDeque;
 		typedef std::list<TChatLine*> TChatLineList;
 
 	public:

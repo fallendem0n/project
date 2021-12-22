@@ -25,6 +25,7 @@ import uiPlayerGauge
 import uiCharacter
 import uiTarget
 import consoleModule
+import constInfo
 
 # interface module이 문제야...
 import interfaceModule
@@ -361,6 +362,8 @@ class SelectCharacterWindow(ui.Window):
 		self.chrRenderer = self.CharacterRenderer()
 		self.chrRenderer.SetParent(self.backGround)
 		self.chrRenderer.Show()
+
+		constInfo.LOAD_CURTAIN = 1
 
 		return 1
 

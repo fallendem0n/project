@@ -46,8 +46,8 @@ class PhaseCurtain(ui.Bar):
 		if 0 != self.event:
 
 			self.curAlpha += self.speed
-			if self.curAlpha >= 1.0:
-				self.curAlpha = 1.0
+			if self.curAlpha >= 0.0:
+				self.curAlpha = 0.0
 
 				# 이벤트 중간에 멈출경우를 대비해 미리 제거
 				event=self.event

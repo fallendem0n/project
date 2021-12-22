@@ -109,6 +109,7 @@ class DESC
 		LPCHARACTER		GetCharacter()		{ return m_lpCharacter; }
 
 		bool			IsPhase(int phase) const	{ return m_iPhase == phase ? true : false; }
+		int			GetPhase() const	{ return m_iPhase; }
 
 		const struct sockaddr_in & GetAddr()		{ return m_SockAddr;	}
 
