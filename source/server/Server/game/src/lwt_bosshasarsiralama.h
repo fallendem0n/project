@@ -22,11 +22,12 @@ public:
 class CBossHasarSiralama : public singleton<CBossHasarSiralama>
 {
 public:
+	bool	KorumaliAlanAktifMi(DWORD mpIDX);
 	void	CheckBoss(int hour, int min, int sec);
 	bool	BossVnum(DWORD mVnum);
 	void	ListeyeEkle(LPCHARACTER ch);
 	void	ListeyiTemizle();
-	void	Packet(const char* veri);
+	void	Packet(const void* c_pvData, size_t iSize);
 	void	Initialize();
 
 	BossHasarSiralamaInfo*	FindBossClass(DWORD dwID);

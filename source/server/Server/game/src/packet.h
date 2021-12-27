@@ -330,6 +330,10 @@ enum
 	HEADER_GC_SWITCHBOT = 171,
 #endif
 
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+	HEADER_GC_BHASAR = 175,
+#endif
+
 #ifdef ENABLE_BOSS_MANAGER_SYSTEM
 	HEADER_GC_BOSS_DATA						= 212,
 #endif
@@ -3055,6 +3059,19 @@ struct TSwitchbotUpdateItem
 	long	alSockets[ITEM_SOCKET_MAX_NUM];
 	TPlayerItemAttribute aAttr[ITEM_ATTRIBUTE_MAX_NUM];
 };
+#endif
+
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+typedef struct sBossHasarData
+{
+	BYTE	bHeader;
+	BYTE	bRank;
+	WORD	wRaceNum;
+	char	cName[CHARACTER_NAME_MAX_LEN +1];
+	BYTE	bLevel;
+	BYTE	bEmpire;
+	float	fDamage;
+} TBossHasarData;
 #endif
 
 

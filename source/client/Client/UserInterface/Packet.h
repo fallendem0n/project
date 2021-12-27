@@ -354,6 +354,9 @@ enum
 #ifdef ENABLE_SWITCHBOT
 	HEADER_GC_SWITCHBOT							= 171,
 #endif
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+	HEADER_GC_BHASAR = 175,
+#endif
 	// @fixme007
 	HEADER_GC_UNK_213							= 213,
 	// BURASI_DOLU_LAN							= 213,
@@ -3518,6 +3521,18 @@ struct TSwitchbotUpdateItem
 };
 #endif
 
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+typedef struct sBossHasarData
+{
+	BYTE	bHeader;
+	BYTE	bRank;
+	WORD	wRaceNum;
+	char	cName[CHARACTER_NAME_MAX_LEN +1];
+	BYTE	bLevel;
+	BYTE	bEmpire;
+	float	fDamage;
+} TBossHasarData;
+#endif
 
 
 #pragma pack(pop)

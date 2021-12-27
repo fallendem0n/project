@@ -24,7 +24,6 @@ import skill
 import messenger
 import localeInfo
 import constInfo
-import uiruhtasi
 import exchange
 import ime
 import uiSearchShop
@@ -92,8 +91,6 @@ class GameWindow(ui.ScriptWindow):
 		self.SetWindowName("game")
 		net.SetPhaseWindow(net.PHASE_WINDOW_GAME, self)
 		player.SetGameWindow(self)
-		self.ruhtasi = uiruhtasi.RuhTasi()
-		self.ruhtasi.Hide()
 
 		self.quickSlotPageIndex = 0
 		self.lastPKModeSendedTime = 0
@@ -163,6 +160,10 @@ class GameWindow(ui.ScriptWindow):
 		self.ronarkWarScoreBoard.LoadDialog()
 		self.ronarkWarScoreBoard.Hide()		
 
+		import uiBHasarSiralama
+		self.brrankboard = uiBHasarSiralama.BossRanking()
+		self.brrankboard.LoadDialog()
+		self.brrankboard.Hide()		
 
 		#wj 2014.1.2. ESC키를 누를 시 우선적으로 DropQuestionDialog를 끄도록 만들었다. 하지만 처음에 itemDropQuestionDialog가 선언되어 있지 않아 ERROR가 발생하여 init에서 선언과 동시에 초기화 시킴.
 		self.itemDropQuestionDialog = None
@@ -319,6 +320,9 @@ class GameWindow(ui.ScriptWindow):
 			self.ronarkWarScoreBoard.Hide()
 			self.ronarkWarScoreBoard = None
 
+		if self.brrankboard:
+			self.brrankboard.Hide()
+			self.brrankboard = None
 
 		chat.Close()
 		snd.StopAllSound()
@@ -378,10 +382,6 @@ class GameWindow(ui.ScriptWindow):
 			self.console.Close()
 			self.console=None
 
-		if self.ruhtasi:
-			self.ruhtasi.Destroy()
-			self.ruhtasi = None
-
 		if self.targetBoard:
 			self.targetBoard.Destroy()
 			self.targetBoard = None
@@ -416,9 +416,6 @@ class GameWindow(ui.ScriptWindow):
 		app.HideCursor()
 
 		print "---------------------------------------------------------------------------- CLOSE GAME WINDOW"
-
-	def ruhcac(self):
-		self.ruhtasi.Show()
 
 	def __BuildKeyDict(self):
 		onPressKeyDict = {}
@@ -1763,9 +1760,6 @@ class GameWindow(ui.ScriptWindow):
 		if self.enableXMasBoom:
 			self.__XMasBoom_Update()
 
-		if constInfo.LOAD_CURTAIN == 1:
-			constInfo.LOAD_CURTAIN = 0
-
 		self.interface.BUILD_OnUpdate()
 
 
@@ -2188,7 +2182,6 @@ class GameWindow(ui.ScriptWindow):
 			"PRESERVE_DayMode"		: self.__PRESERVE_DayMode_Update,
 			"CloseRestartWindow"	: self.__RestartDialog_Close,
 			"OpenPrivateShop"		: self.__PrivateShop_Open,
-			"ruhtasiekranac"			: self.ruhcac,
 			"PartyHealReady"		: self.PartyHealReady,
 			"ShowMeSafeboxPassword"	: self.AskSafeboxPassword,
 			"CloseSafebox"			: self.CommandCloseSafebox,
@@ -2346,6 +2339,14 @@ class GameWindow(ui.ScriptWindow):
 				self.ronarkWarScoreBoard.Show()
 				
 			self.ronarkWarScoreBoard.UpdateInfo(int(list), id, name, damage, member, maxcount, observer)
+
+	def BRInfoData(self, list, race, name, level, empire, damage):
+		if self.brrankboard:
+			if not self.brrankboard.IsShow():
+				self.brrankboard.Show()
+				
+			self.brrankboard.UpdateInfo(int(list), race, name, level, empire, damage)
+
 
 
 	if app.BLACKMARKET:

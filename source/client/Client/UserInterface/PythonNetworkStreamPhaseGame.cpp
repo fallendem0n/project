@@ -682,6 +682,12 @@ void CPythonNetworkStream::GamePhase()
 			break;
 #endif
 
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+		case HEADER_GC_BHASAR:
+			ret = RecvBHasarPacket();
+			break;
+#endif
+
 			default:
 				ret = RecvDefaultPacket(header);
 				break;
@@ -1358,6 +1364,22 @@ void CPythonNetworkStream::__ConvertEmpireText(DWORD dwEmpireID, char* szText)
 		}
 	}
 }
+
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+bool CPythonNetworkStream::RecvBHasarPacket()
+{
+	TBossHasarData p;
+	if (!Recv(sizeof(TBossHasarData), &p))
+	{
+		Tracenf("Recv TBossHasarData Packet Error");
+		return false;
+	}
+
+	PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "BRInfoData", Py_BuildValue("(iisiif)",
+	p.bRank, p.wRaceNum, p.cName, p.bLevel, p.bEmpire, p.fDamage));
+	return true;
+}
+#endif
 
 bool CPythonNetworkStream::RecvChatPacket()
 {

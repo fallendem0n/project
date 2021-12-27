@@ -8,6 +8,10 @@
 #include "lwt_bosshasarsiralama.h"
 #include "char_manager.h"
 #include "questmanager.h"
+#ifdef ENABLE_KORUMALI_ALAN
+	#define GUVENLI_ALAN_SURE 1
+	#define SAATTEN_ONCEKI_DK 59
+#endif
 
 #define LOG_TUT
 /* -------------------------------------------------------- */
@@ -48,23 +52,26 @@ void CBossHasarSiralama::Initialize() //deactive
 {
 	for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
 	{
-		bossCont.emplace_back(M2_NEW BossHasarSiralamaInfo(_BossInfos[i][BOSS_VNUM]));
+		bossCont.push_back(M2_NEW BossHasarSiralamaInfo(_BossInfos[i][BOSS_VNUM]));
 #ifdef LOG_TUT
 		sys_err("CBossHasarSiralama Class olusturuldu '%d'", _BossInfos[i][BOSS_VNUM]);
 #endif
 	}
 }
 
-void CBossHasarSiralama::Packet(const char* veri)
+void CBossHasarSiralama::Packet(const void* c_pvData, size_t iSize)
 {
+	TEMP_BUFFER buf;
+	if (iSize)
+		buf.write(c_pvData, iSize);
 	for (const auto& it : characterList)
-		it->ChatPacket(CHAT_TYPE_COMMAND, veri);
+		it->GetDesc()->Packet(buf.read_peek(), buf.size());
 }
 
 void CBossHasarSiralama::ListeyeEkle(LPCHARACTER ch)
 {
 	if (ch)
-		characterList.emplace_back(ch);
+		characterList.push_back(ch);
 }
 
 void CBossHasarSiralama::ListeyiTemizle()
@@ -73,12 +80,36 @@ void CBossHasarSiralama::ListeyiTemizle()
 		characterList.clear();
 }
 
+#ifdef ENABLE_KORUMALI_ALAN
+bool CBossHasarSiralama::KorumaliAlanAktifMi(DWORD mpIDX)
+{
+	for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
+	{
+		if (_BossInfos[i][MAP_INDEX] == mpIDX && _BossInfos[i][SECURITY] == true)
+			return true;
+	}
+	return false;
+}
+#endif
+
 void CBossHasarSiralama::CheckBoss(int hour, int min, int sec)
 {
 	if (sec == 0)
 	{
 		for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
 		{
+#ifdef ENABLE_KORUMALI_ALAN
+			if ( _BossInfos[i][SECURITY] == false && ((DWORD)min == _BossInfos[i][RESPAWN_TIME_M] - GUVENLI_ALAN_SURE || min == SAATTEN_ONCEKI_DK) )
+			{
+				_BossInfos[i][SECURITY] = true;
+				SendNoticeMap("Bu haritada guvenli alan aktif edildi!", _BossInfos[i][MAP_INDEX], true);
+			}
+			if (_BossInfos[i][SECURITY] == true && (DWORD)min == _BossInfos[i][RESPAWN_TIME_M] + GUVENLI_ALAN_SURE ) //3dk sonra kapat
+			{
+				_BossInfos[i][SECURITY] = false;
+				SendNoticeMap("Bu haritada guvenli alan deaktif edildi!", _BossInfos[i][MAP_INDEX], true);
+			}
+#endif
 			if (_BossInfos[i][RESPAWN_TIME_M] == 0 && hour % _BossInfos[i][RESPAWN_TIME_H] == 0 && min == 0)
 			{
 				CHARACTER_MANAGER::instance().SpawnMob(_BossInfos[i][BOSS_VNUM], _BossInfos[i][MAP_INDEX], _BossInfos[i][POS_X]*100, _BossInfos[i][POS_Y]*100, 0, false, 360);
@@ -121,9 +152,9 @@ void BossHasarSiralamaInfo::BasAmk(std::map<VID, CHARACTER::TBattleInfo>& rMP)
 	std::set<std::pair<VID, CHARACTER::TBattleInfo>, siralaAmk>  sSET(rMP.begin(), rMP.end());
 	BYTE list = 0;
 
-	for (auto it = sSET.rbegin(); it != sSET.rend(); it++) // gonder baqm
+	for (auto it = sSET.rbegin(); it != sSET.rend(); it++)
 	{
-		if (list > 5) // five member in list
+		if (list > 5)
 			continue;
 
 		auto oyuncu = CHARACTER_MANAGER::instance().Find(it->first);
@@ -131,18 +162,16 @@ void BossHasarSiralamaInfo::BasAmk(std::map<VID, CHARACTER::TBattleInfo>& rMP)
 		{
 			continue;
 		}
-
 		float fDamage = MINMAX(0, (double)(it->second.iTotalDamage * 100) / (double)(GetBossHP()), 100);
-		char szMP[128];
-		snprintf(szMP, sizeof(szMP), "br_info %d %d %s %d %d %f %d",
-		list,
-		oyuncu->GetRaceNum(),
-		oyuncu->GetName(),
-		oyuncu->GetLevel(),
-		oyuncu->GetEmpire(),
-		fDamage,
-		oyuncu->zehirledim == true ? 1 : 0);
-		CBossHasarSiralama::instance().Packet(szMP);
+		TBossHasarData pack{};
+		pack.bHeader = HEADER_GC_BHASAR;
+		pack.bRank = list;
+		pack.wRaceNum = oyuncu->GetRaceNum();
+		strlcpy(pack.cName, oyuncu->GetName(), sizeof(pack.cName));
+		pack.bLevel = oyuncu->GetLevel();
+		pack.bEmpire = oyuncu->GetEmpire();
+		pack.fDamage = fDamage;
+		CBossHasarSiralama::instance().Packet(&pack, sizeof(pack));
 		list++;
 	}
 }

@@ -530,6 +530,9 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 #ifdef ENABLE_PM_ALL_SEND_SYSTEM
 		bool RecvBulkWhisperPacket();
 #endif
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+	bool RecvBHasarPacket();
+#endif
 		bool RecvOwnerShipPacket();
 		bool RecvSyncPositionPacket();
 		bool RecvWhisperPacket();
