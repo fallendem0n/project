@@ -1,13 +1,6 @@
 ﻿  StdAfx.cpp
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterLib\SkyBox.h(108,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
-  AccountConnector.cpp
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\eterLib\SkyBox.h(108,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
   AffectFlagContainer.cpp
-  CameraProcedure.cpp
-  CheckLatestFiles.cpp
-  GameType.cpp
-  GuildMarkDownloader.cpp
-  GuildMarkUploader.cpp
-  Hackshield.cpp
   InstanceBase.cpp
   InstanceBaseBattle.cpp
   InstanceBaseEffect.cpp
@@ -15,18 +8,67 @@ C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterLib\SkyBox.
   InstanceBaseMotion.cpp
   InstanceBaseMovement.cpp
   InstanceBaseTransform.cpp
-  InsultChecker.cpp
-  Locale.cpp
-  MarkImage.cpp
-  MarkManager.cpp
-  MovieMan.cpp
+  CameraProcedure.cpp
+  PythonAcce.cpp
+  PythonBackground.cpp
+  PythonBackgroundModule.cpp
+  PythonCharacterManager.cpp
+  PythonCharacterManagerModule.cpp
+  PythonCharacterModule.cpp
+  PythonEffectModule.cpp
+  PythonEventManager.cpp
+  PythonEventManagerMoudle.cpp
+  PythonGameEventManagerModule.cpp
+  PythonItem.cpp
   Kod Üretiliyor...
   Derleniyor...
-  NProtectGameGuard.cpp
-  NetworkActorManager.cpp
-  ProcessCRC.cpp
+  PythonItemModule.cpp
+  PythonNetworkStreamOfflineshop.cpp
+  PythonNonPlayer.cpp
+  PythonNonPlayerModule.cpp
+  PythonOfflineshop.cpp
+  PythonPlayer.cpp
+  PythonPlayerEventHandler.cpp
+  PythonPlayerInput.cpp
+  PythonPlayerInputKeyboard.cpp
+  PythonPlayerInputMouse.cpp
+  PythonPlayerModule.cpp
+  PythonPlayerSettingsModule.cpp
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(82,1): warning C4067: ön işlemci yönergesinden sonra beklenmeyen belirteçler var - satır sonu bekleniyordu
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(294,1): warning C4067: ön işlemci yönergesinden sonra beklenmeyen belirteçler var - satır sonu bekleniyordu
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(532,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(805,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(1121,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(1333,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(1595,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
+  PythonPlayerSkill.cpp
+  PythonQuest.cpp
+  PythonSkill.cpp
+  PythonChat.cpp
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChat.cpp(779,16): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChat.cpp(779,20): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChat.cpp(779,26): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChat.cpp(779,39): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
+  PythonChatModule.cpp
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChatModule.cpp(434,62): warning C4477: '_snprintf' : '%d' biçim dizesi 'int' türü bir bağımsız değişken gerektirir, ancak 2 değişen sayıda bağımsız değişkenin türü '__int64'
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChatModule.cpp(434,62): message : biçim dizesinde '%lld' kullanmayı düşünün
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonChatModule.cpp(434,62): message : biçim dizesinde '%I64d' kullanmayı düşünün
+  PythonExchange.cpp
+  PythonExchangeModule.cpp
+  PythonFlyModule.cpp
+  Kod Üretiliyor...
+  Derleniyor...
+  PythonGuild.cpp
+  PythonMessenger.cpp
+  PythonMiniMap.cpp
+  PythonMiniMapModule.cpp
+  PythonSafeBox.cpp
+  PythonShop.cpp
+  PythonSwitchbot.cpp
+  PythonTextTail.cpp
+  PythonTextTailModule.cpp
+  PythonPackModule.cpp
   ProcessScanner.cpp
-  PythonAcce.cpp
   PythonApplication.cpp
   PythonApplicationCamera.cpp
   PythonApplicationCursor.cpp
@@ -35,54 +77,39 @@ C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\eterLib\SkyBox.
   PythonApplicationModule.cpp
   PythonApplicationProcedure.cpp
   PythonApplicationWebPage.cpp
-  PythonBackground.cpp
-  PythonBackgroundModule.cpp
-  PythonCharacterManager.cpp
-  PythonCharacterManagerModule.cpp
-  PythonCharacterModule.cpp
-  PythonChat.cpp
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChat.cpp(779,16): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChat.cpp(779,20): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChat.cpp(779,26): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChat.cpp(779,39): warning C4838: 'float ile 'LONG arasında dönüştürme bir daraltma dönüştürmesi gerektiriyor
-  PythonChatModule.cpp
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChatModule.cpp(434,62): warning C4477: '_snprintf' : '%d' biçim dizesi 'int' türü bir bağımsız değişken gerektirir, ancak 2 değişen sayıda bağımsız değişkenin türü '__int64'
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChatModule.cpp(434,62): message : biçim dizesinde '%lld' kullanmayı düşünün
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonChatModule.cpp(434,62): message : biçim dizesinde '%I64d' kullanmayı düşünün
+  PythonIME.cpp
   Kod Üretiliyor...
   Derleniyor...
-  PythonEffectModule.cpp
-  PythonEventManager.cpp
-  PythonEventManagerMoudle.cpp
-  PythonExceptionSender.cpp
-  PythonExchange.cpp
-  PythonExchangeModule.cpp
-  PythonFlyModule.cpp
-  PythonGameEventManagerModule.cpp
-  PythonGuild.cpp
-  PythonIME.cpp
   PythonIMEModule.cpp
-  PythonItem.cpp
-  PythonItemModule.cpp
-  PythonMessenger.cpp
-  PythonMiniMap.cpp
-  PythonMiniMapModule.cpp
+  PythonProfilerModule.cpp
+  PythonSoundManagerModule.cpp
+  PythonSystem.cpp
+  PythonSystemModule.cpp
+  GuildMarkDownloader.cpp
+  GuildMarkUploader.cpp
+  MarkImage.cpp
+  MarkManager.cpp
+  Locale.cpp
+  AccountConnector.cpp
+  InsultChecker.cpp
+  NetworkActorManager.cpp
+  ProcessCRC.cpp
+  PythonExceptionSender.cpp
   PythonNetworkDatagram.cpp
   PythonNetworkDatagramModule.cpp
   PythonNetworkStream.cpp
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonNetworkStream.cpp(205,1): warning C4305: 'bağımsız değişken': '<unnamed-enum-STATIC_SIZE_PACKET>' iken 'bool' olarak kesildi
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonNetworkStream.cpp(205,1): warning C4305: 'bağımsız değişken': '<unnamed-enum-STATIC_SIZE_PACKET>' iken 'bool' olarak kesildi
   PythonNetworkStreamCommand.cpp
+  PythonNetworkStreamEvent.cpp
   Kod Üretiliyor...
   Derleniyor...
-  PythonNetworkStreamEvent.cpp
   PythonNetworkStreamModule.cpp
-  PythonNetworkStreamOfflineshop.cpp
   PythonNetworkStreamPhaseGame.cpp
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1502,7): warning C4101: 'line': yerel değişken başvurusu kaldırıldı
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1853,67): warning C4267: 'bağımsız değişken': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1854,58): warning C4267: 'bağımsız değişken': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1861,58): warning C4267: 'bağımsız değişken': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(4153,44): warning C4267: '=': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1524,7): warning C4101: 'line': yerel değişken başvurusu kaldırıldı
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1875,67): warning C4267: 'bağımsız değişken': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1876,58): warning C4267: 'bağımsız değişken': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(1883,58): warning C4267: 'bağımsız değişken': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\UserInterface\PythonNetworkStreamPhaseGame.cpp(4175,44): warning C4267: '=': 'size_t' - 'unsigned char' dönüşümü; veri kaybı olabilir
   PythonNetworkStreamPhaseGameActor.cpp
   PythonNetworkStreamPhaseGameItem.cpp
   PythonNetworkStreamPhaseHandShake.cpp
@@ -90,44 +117,17 @@ C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\P
   PythonNetworkStreamPhaseLogin.cpp
   PythonNetworkStreamPhaseOffline.cpp
   PythonNetworkStreamPhaseSelect.cpp
-  PythonNonPlayer.cpp
-  PythonNonPlayerModule.cpp
-  PythonOfflineshop.cpp
-  PythonPackModule.cpp
-  PythonPlayer.cpp
-  PythonPlayerEventHandler.cpp
-  PythonPlayerInput.cpp
-  PythonPlayerInputKeyboard.cpp
-  PythonPlayerInputMouse.cpp
-  Kod Üretiliyor...
-  Derleniyor...
-  PythonPlayerModule.cpp
-  PythonPlayerSettingsModule.cpp
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(82,1): warning C4067: ön işlemci yönergesinden sonra beklenmeyen belirteçler var - satır sonu bekleniyordu
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(294,1): warning C4067: ön işlemci yönergesinden sonra beklenmeyen belirteçler var - satır sonu bekleniyordu
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(532,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(805,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(1121,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(1333,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
-C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\UserInterface\PythonPlayerSettingsModule.cpp(1595,7): warning C4101: 'szSkillName': yerel değişken başvurusu kaldırıldı
-  PythonPlayerSkill.cpp
-  PythonProfilerModule.cpp
-  PythonQuest.cpp
-  PythonSafeBox.cpp
-  PythonShop.cpp
-  PythonSkill.cpp
-  PythonSoundManagerModule.cpp
-  PythonSwitchbot.cpp
-  PythonSystem.cpp
-  PythonSystemModule.cpp
-  PythonTextTail.cpp
-  PythonTextTailModule.cpp
   ServerStateChecker.cpp
   ServerStateCheckerModule.cpp
-  UserInterface.cpp
+  CheckLatestFiles.cpp
+  Hackshield.cpp
+  NProtectGameGuard.cpp
   WiseLogicXTrap.cpp
+  GameType.cpp
+  MovieMan.cpp
+  UserInterface.cpp
   Kod Üretiliyor...
   libjpeg-MT.lib(jerror.obj) : /GL ile derlenmiş MSIL .netmodule veya modül bulundu; bağlantı /LTCG ile yeniden başlatılıyor; bağlayıcı performansını artırmak için bağlantı komut satırına /LTCG ekleyin
   Kod üretiliyor
   Kodun üretilmesi tamamlandı
-  UserInterface.vcxproj -> C:\Users\murat\Desktop\Siveps2-1-99-Project\source\client\Client\bin\metin2client.exe
+  UserInterface.vcxproj -> C:\Users\ACER\Documents\GitHub\project\source\client\Client\bin\metin2client.exe

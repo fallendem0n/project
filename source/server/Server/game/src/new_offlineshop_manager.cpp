@@ -2918,13 +2918,6 @@ namespace offlineshop
 	{
 		if(!ch || !ch->GetShopSafebox())
 			return false;
- //to fix amount exploit
-		if (valutes.illYang < 0)
-			return false;
-#ifdef ENABLE_CHEQUE_SYSTEM
-		if (valutes.iCheque < 0)
-			return false;
-#endif
 		CShopSafebox* pkSafebox = ch->GetShopSafebox();
 		CShopItem* pItem=nullptr;
 

@@ -1,0 +1,67 @@
+﻿  StdAfx.cpp
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\eterLib\SkyBox.h(108,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
+  ActorInstance.cpp
+  ActorInstanceAttach.cpp
+  ActorInstanceBattle.cpp
+  ActorInstanceBlend.cpp
+  ActorInstanceCollisionDetection.cpp
+  ActorInstanceData.cpp
+  ActorInstanceEvent.cpp
+  ActorInstanceFly.cpp
+  ActorInstanceMotion.cpp
+  ActorInstanceMotionEvent.cpp
+  ActorInstancePosition.cpp
+  ActorInstanceRender.cpp
+  ActorInstanceRotation.cpp
+  ActorInstanceSync.cpp
+  ActorInstanceWeaponTrace.cpp
+  DungeonBlock.cpp
+  PhysicsObject.cpp
+  RaceData.cpp
+  RaceDataFile.cpp
+  RaceManager.cpp
+  Kod Üretiliyor...
+  Derleniyor...
+  RaceMotionData.cpp
+  WeaponTrace.cpp
+  Area.cpp
+  AreaLoaderThread.cpp
+  AreaTerrain.cpp
+  MapBase.cpp
+  MapManager.cpp
+  MapOutdoor.cpp
+  MapOutdoorCharacterShadow.cpp
+  MapOutdoorIndexBuffer.cpp
+  MapOutdoorLoad.cpp
+  MapOutdoorQuadtree.cpp
+  MapOutdoorRender.cpp
+  MapOutdoorRenderHTP.cpp
+  MapOutdoorRenderSTP.cpp
+  MapOutdoorUpdate.cpp
+  MapOutdoorWater.cpp
+  MapType.cpp
+  MapUtil.cpp
+  MonsterAreaInfo.cpp
+  Kod Üretiliyor...
+  Derleniyor...
+  Property.cpp
+  PropertyLoader.cpp
+  PropertyManager.cpp
+  SnowEnvironment.cpp
+  SnowParticle.cpp
+  TerrainDecal.cpp
+  TerrainPatch.cpp
+  TerrainQuadtree.cpp
+  GameEventManager.cpp
+  GameType.cpp
+  GameUtil.cpp
+  ItemData.cpp
+C:\Users\ACER\Documents\GitHub\project\source\client\Client\GameLib\ItemData.cpp(524,1): warning C4067: ön işlemci yönergesinden sonra beklenmeyen belirteçler var - satır sonu bekleniyordu
+  ItemManager.cpp
+  FlyingData.cpp
+  FlyingInstance.cpp
+  FlyingObjectManager.cpp
+  FlyTarget.cpp
+  FlyTrace.cpp
+  Kod Üretiliyor...
+  gamelib.vcxproj -> C:\Users\ACER\Documents\GitHub\project\source\client\Client\GameLib\Release\gamelib.lib
