@@ -6771,15 +6771,15 @@ void CHARACTER::SetQuestFlag(const std::string& flag, int value)
 
 void CHARACTER::DetermineDropMetinStone()
 {
-#ifdef ENABLE_NEWSTUFF
+/* #ifdef ENABLE_NEWSTUFF
 	if (g_NoDropMetinStone)
 	{
 		m_dwDropMetinStone = 0;
 		return;
 	}
-#endif
+#endif */
 	const int METIN_STONE_NUM = 14;
-	static const DWORD c_adwMetin[] =
+	static DWORD c_adwMetin[METIN_STONE_NUM] = 
 	{
 		28030,
 		28031,
@@ -6795,10 +6795,10 @@ void CHARACTER::DetermineDropMetinStone()
 		28041,
 		28042,
 		28043,
-#if defined(ENABLE_MAGIC_REDUCTION_SYSTEM) && defined(USE_MAGIC_REDUCTION_STONES)
+/* #if defined(ENABLE_MAGIC_REDUCTION_SYSTEM) && defined(USE_MAGIC_REDUCTION_STONES)
 		28044,
 		28045,
-#endif
+#endif */
 	};
 	DWORD stone_num = GetRaceNum();
 	int idx = std::lower_bound(aStoneDrop, aStoneDrop+STONE_INFO_MAX_NUM, stone_num) - aStoneDrop;
