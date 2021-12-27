@@ -1678,10 +1678,10 @@ namespace offlineshop
 	}
 
 
-	bool CShopManager::RecvShopSafeboxLoadDBPacket(DWORD dwOwnerID, const TValutesInfo& valute, const std::vector<DWORD>& ids, const std::vector<TItemInfoEx>& items)
+	 bool CShopManager::RecvShopSafeboxLoadDBPacket(DWORD dwOwnerID, const TValutesInfo& valute, const std::vector<DWORD>& ids, const std::vector<TItemInfoEx>& items)
 	{
-		if(GetShopSafeboxByOwnerID(dwOwnerID))
-			return false;
+		/*if(GetShopSafeboxByOwnerID(dwOwnerID))
+			return false;*/
 
 		CShopSafebox::VECITEM vec;
 		vec.reserve(ids.size());
@@ -2918,7 +2918,13 @@ namespace offlineshop
 	{
 		if(!ch || !ch->GetShopSafebox())
 			return false;
-
+ //to fix amount exploit
+		if (valutes.illYang < 0)
+			return false;
+#ifdef ENABLE_CHEQUE_SYSTEM
+		if (valutes.iCheque < 0)
+			return false;
+#endif
 		CShopSafebox* pkSafebox = ch->GetShopSafebox();
 		CShopItem* pItem=nullptr;
 
