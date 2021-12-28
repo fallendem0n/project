@@ -3838,7 +3838,7 @@ VNUM	LOCALE_NAME
 38006	Momo-Reroll
 38010	Yang Paketi
 38011	Yang Paketi
-38050	Güç Sandýðý
+38050	Eðitim Sandýðý
 38051	Kral Kaplaný Kristali
 38052	Krallar Sandýðý
 38053	Sonsuz Kýþ Sandýðý
