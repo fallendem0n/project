@@ -2497,7 +2497,7 @@
 38009	Kaplan Gücü	10 dakika boyunca %80 daha fazla PvE hasarý verirsin. (Efekt süresi istiflenebilir.)
 38010	Yang Paketi	Savaþ kasasýný Yang'la doldurmak için paketi kullan. Ticareti yok.
 38011	Yang Paketi	Savaþ kasasýný Yang'la doldurmak için paketi kullan. Ticareti yok.
-38050	Güç Sandýðý	Hayret! Sandýk çok hafif, sanki içi boþ...
+38050	Eðitim Sandýðý
 38051	Kral Kaplaný Kristali	Kötü hayvan ruhlarýný dizginlemek için ciddi anlamda büyü gücüne sahip olmak gerekir. Bu kristal beþ olasý Kral Kaplaný Mührü'nün birini içerir.
 38052	Krallar Sandýðý	Bu muhteþem sandýðýn içinde krallara layýk bir hazine saklý! Bu eþyanýn ticareti var.
 38053	Sonsuz Kýþ Sandýðý	Bu sandýk buzdan yapýlmýþtýr. Kapaðý hafif bir týkýrtýyla açýlýr ve içinden buz gibi bir soðuk yükselir.
