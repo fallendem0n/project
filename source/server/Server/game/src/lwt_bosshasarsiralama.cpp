@@ -144,7 +144,7 @@ void CBossHasarSiralama::UpdateInfo(const DWORD bossHP)
 	for (const auto& it: BossRankVec)
 	{
 		if (list > 9) { continue; }
-		BYTE Damage = MINMAX(0, (it.second.dwDamage * 100) / (bossHP), static_cast<BYTE>(100));
+		BYTE Damage = MINMAX(0, (it.second.dwDamage * 100) / (bossHP), 100);
 
 		TBossHasarData pack{};
 		pack.bHeader = HEADER_GC_BHASAR;
