@@ -86,7 +86,7 @@ void CBossHasarSiralama::VecActions(const LPCHARACTER ch, const DWORD damage)
 		d.bLevel = static_cast<BYTE>(ch->GetLevel());
 		d.bEmpire = ch->GetEmpire();
 		d.dwDamage = damage;
-		BossRankVec.push_back(ch, d);
+		BossRankVec.emplace_back(ch, d);
 		SendClient(GC_BRINFO_ADD, nullptr, 0);
 	}
 }
