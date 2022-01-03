@@ -3541,7 +3541,7 @@ typedef struct sBossHasarData
 	char	cName[CHARACTER_NAME_MAX_LEN +1];
 	BYTE	bLevel;
 	BYTE	bEmpire;
-	float	fDamage;
+	BYTE	bDamage;
 } TBossHasarData;
 #endif
 
