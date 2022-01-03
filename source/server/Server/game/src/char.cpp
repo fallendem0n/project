@@ -744,6 +744,11 @@ void CHARACTER::Destroy()
 
 	if (m_bMonsterLog)
 		CHARACTER_MANAGER::instance().UnregisterForMonsterLog(this);
+
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+	CBossHasarSiralama::instance().RemoveVec(this);
+#endif
+
 }
 
 #ifdef __ENABLE_NEW_OFFLINESHOP__

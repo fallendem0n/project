@@ -157,7 +157,7 @@ ifeq ($(ENABLE_RONARK_SYSTEM), 1)
 CPPFILE += lwt_ronark.cpp
 endif
 ENABLE_BOSS_HASAR_SYSTEM = 1
-ifeq ($(ENABLE_RONARK_SYSTEM), 1)
+ifeq ($(ENABLE_BOSS_HASAR_SYSTEM), 1)
 CPPFILE += lwt_bosshasarsiralama.cpp
 endif
 

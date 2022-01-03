@@ -1,128 +1,59 @@
 /**************************
-* Author: Larry Watterson *
-* Date: 03.06.21 *
+* * Author: Larry Watterson *
+* ! Date: 03.06.21 !
 ***************************/
 #include "stdafx.h"
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
-#include "char.h"
 #include "lwt_bosshasarsiralama.h"
+#include "buffer_manager.h"
 #include "char_manager.h"
-#include "questmanager.h"
+#include "char.h"
+#include "desc.h"
+
 #ifdef ENABLE_KORUMALI_ALAN
 	#define GUVENLI_ALAN_SURE 1
-	#define SAATTEN_ONCEKI_DK 59
+	#define SAATTEN_ONCEKI_DK  59
 #endif
 
-#define LOG_TUT
+// #define LOG_TUT
 /* -------------------------------------------------------- */
-enum eBossInfos
-{
-	BOSS_VNUM = 0,
-	POS_X = 1,
-	POS_Y = 2,
-	MAP_INDEX = 3,  
-	RESPAWN_TIME_H = 4,
-	RESPAWN_TIME_M = 5,
-	SECURITY = 6,
-	BOSS_INFO_MAX_NUM,	
-};
-
-DWORD _BossInfos[][BOSS_INFO_MAX_NUM] = 
+DWORD _BossInfos[][CBossHasarSiralama::BOSS_INFO_MAX_NUM] =
 { /* BOSS VNUM - MAP_X - MAP_Y - MAP_INDEX - R_H - R_M */
-	{2206, 6032, 6922, 62, 0, 30, false}, // alev kral
-	{1901, 4333, 2165, 61, 1, 0, false}, // dokuz kuyruk
-	{1304, 5750, 932, 65, 1, 0, false}, // sari kaplan hayaleti
-	{1191, 1353, 13438, 72, 4, 0, false}, // buz cadisi
-	{2492, 2749, 12593, 73, 0, 30, false}, // general 1
-	{2494, 1914, 12281, 73, 0, 30, false}, // general 2
-	{2495, 2245, 13171, 73, 0, 30, false}, // general 3
+	{2206, 6032, 6922, 62, 0, 30, false, false}, // alev kral
+	{1901, 4333, 2165, 61, 1, 0, false, false}, // dokuz kuyruk
+	{1304, 5750, 932, 65, 1, 0, false, false}, // sari kaplan hayaleti
+	{1191, 1353, 13438, 72, 4, 0, false, false}, // buz cadisi
+	{2492, 2749, 12593, 73, 0, 30, false, false}, // general 1
+	{2494, 1914, 12281, 73, 0, 30, false, false}, // general 2
+	{2495, 2245, 13171, 73, 0, 30, false, false}, // general 3
 };
-
-struct siralaAmk
+struct vecAlgo
+{
+	LPCHARACTER ch;
+	vecAlgo(LPCHARACTER ch) : ch(ch) {}
+	template <typename T>
+	bool operator()(const T& p) const
+	{
+		return p.first == ch;
+	}
+};
+struct sortVec
 {
 	template <typename T>
-	bool operator()(const T &l, const T &r) const
+	bool operator()(const T& p, const T& p2) const
 	{
-		return l.second.iTotalDamage < r.second.iTotalDamage;
+		return p.second.dwDamage > p2.second.dwDamage;
 	}
 };
 /* -------------------------------------------------------- */
 
-void CBossHasarSiralama::Initialize() //deactive
+BossHasarSiralamaInfo::BossHasarSiralamaInfo(const DWORD dwID, const DWORD dwMaxHP)
 {
-	for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
-	{
-		bossCont.push_back(M2_NEW BossHasarSiralamaInfo(_BossInfos[i][BOSS_VNUM]));
-#ifdef LOG_TUT
-		sys_err("CBossHasarSiralama Class olusturuldu '%d'", _BossInfos[i][BOSS_VNUM]);
-#endif
-	}
+	SetBossVID(dwID);
+	SetBossHP(dwMaxHP);
 }
 
-void CBossHasarSiralama::Packet(const void* c_pvData, size_t iSize)
-{
-	TEMP_BUFFER buf;
-	if (iSize)
-		buf.write(c_pvData, iSize);
-	for (const auto& it : characterList)
-		it->GetDesc()->Packet(buf.read_peek(), buf.size());
-}
-
-void CBossHasarSiralama::ListeyeEkle(LPCHARACTER ch)
-{
-	if (ch)
-		characterList.push_back(ch);
-}
-
-void CBossHasarSiralama::ListeyiTemizle()
-{
-	if (!characterList.empty())
-		characterList.clear();
-}
-
-#ifdef ENABLE_KORUMALI_ALAN
-bool CBossHasarSiralama::KorumaliAlanAktifMi(DWORD mpIDX)
-{
-	for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
-	{
-		if (_BossInfos[i][MAP_INDEX] == mpIDX && _BossInfos[i][SECURITY] == true)
-			return true;
-	}
-	return false;
-}
-#endif
-
-void CBossHasarSiralama::CheckBoss(int hour, int min, int sec)
-{
-	if (sec == 0)
-	{
-		for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
-		{
-#ifdef ENABLE_KORUMALI_ALAN
-			if ( _BossInfos[i][SECURITY] == false && ((DWORD)min == _BossInfos[i][RESPAWN_TIME_M] - GUVENLI_ALAN_SURE || min == SAATTEN_ONCEKI_DK) )
-			{
-				_BossInfos[i][SECURITY] = true;
-				SendNoticeMap("Bu haritada guvenli alan aktif edildi!", _BossInfos[i][MAP_INDEX], true);
-			}
-			if (_BossInfos[i][SECURITY] == true && (DWORD)min == _BossInfos[i][RESPAWN_TIME_M] + GUVENLI_ALAN_SURE ) //3dk sonra kapat
-			{
-				_BossInfos[i][SECURITY] = false;
-				SendNoticeMap("Bu haritada guvenli alan deaktif edildi!", _BossInfos[i][MAP_INDEX], true);
-			}
-#endif
-			if (_BossInfos[i][RESPAWN_TIME_M] == 0 && hour % _BossInfos[i][RESPAWN_TIME_H] == 0 && min == 0)
-			{
-				CHARACTER_MANAGER::instance().SpawnMob(_BossInfos[i][BOSS_VNUM], _BossInfos[i][MAP_INDEX], _BossInfos[i][POS_X]*100, _BossInfos[i][POS_Y]*100, 0, false, 360);
-			}
-			if (_BossInfos[i][RESPAWN_TIME_H] == 0 && min % _BossInfos[i][RESPAWN_TIME_M] == 0)
-			{
-				CHARACTER_MANAGER::instance().SpawnMob(_BossInfos[i][BOSS_VNUM], _BossInfos[i][MAP_INDEX], _BossInfos[i][POS_X]*100, _BossInfos[i][POS_Y]*100, 0, false, 360);
-			}
-		}
-	}
-}
-
-BossHasarSiralamaInfo*	CBossHasarSiralama::FindBossClass(DWORD dwID)
+BossHasarSiralamaInfo* CBossHasarSiralama::FindBossClass(const DWORD dwID) const
 {
 	for (const auto& it : bossCont) {
 		if (it->GetBossVID() == dwID) {
@@ -132,47 +63,132 @@ BossHasarSiralamaInfo*	CBossHasarSiralama::FindBossClass(DWORD dwID)
 	return nullptr;
 }
 
-bool CBossHasarSiralama::BossVnum(DWORD mVnum) // vurulan boss'da gui acilsin mi
+void CBossHasarSiralama::Initialize(const DWORD dwNumber, const DWORD dwMaxHP)
 {
-	for (DWORD i = 0; i < sizeof(_BossInfos)/sizeof(*_BossInfos); i++)
+	bossCont.emplace_back(M2_NEW BossHasarSiralamaInfo(dwNumber, dwMaxHP));
+#ifdef LOG_TUT
+	sys_err("Create class (vnum : %d - maxHP : %d)", dwNumber, dwMaxHP);
+#endif
+}
+
+
+void CBossHasarSiralama::VecActions(const LPCHARACTER ch, const DWORD damage)
+{
+	const auto& it = std::find_if(BossRankVec.begin(), BossRankVec.end(),vecAlgo(ch));
+	if (it != BossRankVec.end())
 	{
-		if (mVnum ==_BossInfos[i][BOSS_VNUM])
+		it->second.dwDamage += damage;
+	}
+	else
+	{
+		damageInfo d{};
+		d.bRace = static_cast<BYTE>(ch->GetRaceNum());
+		d.cName = ch->GetName();
+		d.bLevel = static_cast<BYTE>(ch->GetLevel());
+		d.bEmpire = ch->GetEmpire();
+		d.dwDamage = damage;
+		BossRankVec.emplace_back(ch, d);
+		SendClient(GC_BRINFO_ADD, nullptr, 0);
+	}
+}
+
+void CBossHasarSiralama::SendClient(const BYTE bSubHeader, const void* c_pvData, const size_t iSize)
+{
+	TBossHasarAction packet{};
+	packet.bHeader = HEADER_GC_BHASAR;
+	packet.bSubHeader = bSubHeader;
+
+	TEMP_BUFFER buf;
+	buf.write(&packet, sizeof(packet));
+	if (iSize)
+		buf.write(c_pvData, iSize);
+	for (const auto& it : BossRankVec)
+		it.first->GetDesc()->Packet(buf.read_peek(), buf.size());
+}
+
+void CBossHasarSiralama::CheckBoss(const int hour, const int min, const int sec) const
+{
+	if (sec == 0)
+	{
+		for (BYTE i (0); i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); ++i)
+		{
+			if (_BossInfos[i][IS_SPAWN] == true)
+				return;
+			if (_BossInfos[i][RESPAWN_TIME_M] == 0 && hour % _BossInfos[i][RESPAWN_TIME_H] == 0 && min == 0)
+			{
+				CHARACTER_MANAGER::instance().SpawnMob(_BossInfos[i][BOSS_VNUM], _BossInfos[i][MAP_INDEX], _BossInfos[i][POS_X] * 100, _BossInfos[i][POS_Y] * 100, 0, false, 360);
+				_BossInfos[i][IS_SPAWN] = true;
+			}
+			if (_BossInfos[i][RESPAWN_TIME_H] == 0 && min % _BossInfos[i][RESPAWN_TIME_M] == 0)
+			{
+				CHARACTER_MANAGER::instance().SpawnMob(_BossInfos[i][BOSS_VNUM], _BossInfos[i][MAP_INDEX], _BossInfos[i][POS_X] * 100, _BossInfos[i][POS_Y] * 100, 0, false, 360);
+				_BossInfos[i][IS_SPAWN] = true;
+			}
+		}
+	}
+}
+
+bool CBossHasarSiralama::BossVnum(const DWORD mVnum) const
+{
+	for (BYTE i (0); i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); ++i)
+	{
+		if (mVnum == _BossInfos[i][BOSS_VNUM])
 			return true;
 	}
 	return false;
 }
 
-BossHasarSiralamaInfo::BossHasarSiralamaInfo(DWORD dwID)
+void CBossHasarSiralama::UpdateInfo(const DWORD bossHP)
 {
-	SetBossVID(dwID);
-}
-
-void BossHasarSiralamaInfo::BasAmk(std::map<VID, CHARACTER::TBattleInfo>& rMP)
-{
-	std::set<std::pair<VID, CHARACTER::TBattleInfo>, siralaAmk>  sSET(rMP.begin(), rMP.end());
-	BYTE list = 0;
-
-	for (auto it = sSET.rbegin(); it != sSET.rend(); it++)
+	std::sort(BossRankVec.begin(), BossRankVec.end(), sortVec());
+	int8_t list = 0;
+	for (const auto& it: BossRankVec)
 	{
-		if (list > 5)
-			continue;
+		if (list > 9) { continue; }
+		BYTE Damage = MINMAX(0, (it.second.dwDamage * 100) / (bossHP), static_cast<BYTE>(100));
 
-		auto oyuncu = CHARACTER_MANAGER::instance().Find(it->first);
-		if(!oyuncu)
-		{
-			continue;
-		}
-		float fDamage = MINMAX(0, (double)(it->second.iTotalDamage * 100) / (double)(GetBossHP()), 100);
 		TBossHasarData pack{};
 		pack.bHeader = HEADER_GC_BHASAR;
-		pack.bRank = list;
-		pack.wRaceNum = oyuncu->GetRaceNum();
-		strlcpy(pack.cName, oyuncu->GetName(), sizeof(pack.cName));
-		pack.bLevel = oyuncu->GetLevel();
-		pack.bEmpire = oyuncu->GetEmpire();
-		pack.fDamage = fDamage;
-		CBossHasarSiralama::instance().Packet(&pack, sizeof(pack));
-		list++;
+		pack.wRaceNum = it.second.bRace;
+		pack.bRank = list++;
+		std::strcpy(pack.cName, it.second.cName);
+		pack.bLevel = it.second.bLevel;
+		pack.bEmpire = it.second.bEmpire;
+		pack.bDamage = Damage;
+		SendClient(GC_BRINFO_UPDATE, &pack, sizeof(pack));
 	}
+}
+
+void CBossHasarSiralama::BossAction(DWORD dwRaceNum)
+{
+	BYTE index;
+	for (BYTE i (0); i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); ++i)
+	{
+		if (dwRaceNum == _BossInfos[i][BOSS_VNUM])
+		{
+			_BossInfos[i][IS_SPAWN] = false;
+		}
+	}
+}
+
+void CBossHasarSiralama::Destroy()
+{
+	for (const auto& it : bossCont)
+		delete it;
+	bossCont.clear();
+}
+
+void CBossHasarSiralama::RemoveVec(LPCHARACTER ch)
+{
+	const auto& it = std::remove_if(BossRankVec.begin(), BossRankVec.end(), vecAlgo(ch));
+	if (it != BossRankVec.end())
+		BossRankVec.erase(it);
+}
+
+void CBossHasarSiralama::ClearVec()
+{
+	SendClient(GC_BRINFO_CLEAR, nullptr, 0);
+	if (!BossRankVec.empty())
+		BossRankVec.clear();
 }
 #endif

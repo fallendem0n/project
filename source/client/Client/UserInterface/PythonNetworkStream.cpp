@@ -222,7 +222,7 @@ public:
 			Set(HEADER_GC_ACCE, CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketAcce), STATIC_SIZE_PACKET));
 #endif
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
-		Set(HEADER_GC_BHASAR, TPacketType(sizeof(TBossHasarData), STATIC_SIZE_PACKET));
+			Set(HEADER_GC_BHASAR, TPacketType(sizeof(TBossHasarData), STATIC_SIZE_PACKET));
 #endif
 			Set(HEADER_GC_UNK_213,			CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketGCUnk213), STATIC_SIZE_PACKET)); // @fixme007
 

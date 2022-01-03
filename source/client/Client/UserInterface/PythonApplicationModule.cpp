@@ -1495,6 +1495,12 @@ void initapp()
 	PyModule_AddIntConstant(poModule, "CAMERA_TO_NEGATIVE",		CPythonApplication::CAMERA_TO_NEGITIVE);
 	PyModule_AddIntConstant(poModule, "CAMERA_STOP",			CPythonApplication::CAMERA_STOP);
 
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+	PyModule_AddIntConstant(poModule, "ENABLE_BOSS_RANK", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_BOSS_RANK", 0);
+#endif
+
 #ifdef ENABLE_CPP_PSM
 	PyModule_AddIntConstant(poModule, "ENABLE_CPP_PSM", 1);
 #else

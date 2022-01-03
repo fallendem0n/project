@@ -1003,12 +1003,6 @@ void CHARACTER::Reward(bool bItemDrop)
 			}
 		}
 	}
-#ifdef ENABLE_BOSS_HASAR_SIRALAMA
-	if (CBossHasarSiralama::instance().BossVnum(GetRaceNum()))
-	{
-		CBossHasarSiralama::instance().ListeyiTemizle();
-	}
-#endif
 	m_map_kDamage.clear();
 }
 
@@ -1022,15 +1016,15 @@ struct TItemDropPenalty
 
 TItemDropPenalty aItemDropPenalty_kor[9] =
 {
-    {   0,   0,  0,  0 },    // ìâ?ž*ìâ?¢â?¢
-    {   0,   0,  0,  0 },    // ìË?ìâ?ºâ?¦
+    {   0,   0,  0,  0 },    // ìâ?ž*ìâ?¢â??
+    {   0,   0,  0,  0 },    // ìË?ìâ?ºâ??
     {   0,   0,  0,  0 },    // ìâ?ž±ìž
-    {   0,   0,  0,  0 },    // ì§â?¬ì¸
-    {   0,   0,  0,  0 },    // ìâ??â??ë¯¼
-    {   0,   0,  0,  0 },    // ëâ??*ì¸
-    {   0,   0,  0,  0 },    // ìâ?¢â?¦ì¸
-    {   0,   0,  0,  0 },    // ë§Ë?ëâ??
-    {   0,   0,  0,  0 },    // íÅ?¨ìâ?¢â?¢
+    {   0,   0,  0,  0 },    // ì§?¬ì?
+    {   0,   0,  0,  0 },    // ìâ????ë¯?
+    {   0,   0,  0,  0 },    // ëâ??*??
+    {   0,   0,  0,  0 },    // ìâ?¢â???
+    {   0,   0,  0,  0 },    // ë§?ëâ??
+    {   0,   0,  0,  0 },    // íÅ?¨ì?¢â??
 };
 
 void CHARACTER::ItemDropPenalty(LPCHARACTER pkKiller)
@@ -1297,6 +1291,13 @@ void CHARACTER::Dead(LPCHARACTER pkKiller, bool bImmediateDead)
 			quest::CQuestManager::instance().Kill(pkKiller->GetPlayerID(), quest::QUEST_NO_NPC);
 			CGuildManager::instance().Kill(pkKiller, this);
 		}
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+		if (CBossHasarSiralama::instance().BossVnum(GetRaceNum()))
+		{
+			CBossHasarSiralama::instance().BossAction(GetRaceNum());
+			CBossHasarSiralama::instance().ClearVec();
+		}
+#endif
 	}
 
 #ifdef ENABLE_QUEST_DIE_EVENT
@@ -2538,22 +2539,13 @@ bool CHARACTER::Damage(LPCHARACTER pAttacker, int dam, EDamageType type) // retu
 	//PROF_UNIT puRest2("Rest2");
 	if (pAttacker && dam > 0 && IsNPC())
 	{
-#ifdef ENABLE_BOSS_HASAR_SIRALAMA
-		const auto it2 = CBossHasarSiralama::instance().FindBossClass(this->GetRaceNum());
-		if (it2 != nullptr)
-		{
-			if (it2->GetBossHP() == 0)
-				it2->SetBossHP(this->GetMaxHP());
-		}
-#endif
-
 		//PROF_UNIT puRest20("Rest20");
 		TDamageMap::iterator it = m_map_kDamage.find(pAttacker->GetVID());
 
 		if (it == m_map_kDamage.end())
 		{
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
-			CBossHasarSiralama::instance().ListeyeEkle(pAttacker);
+			CBossHasarSiralama::instance().VecActions(pAttacker, dam);
 #endif
 			m_map_kDamage.insert(TDamageMap::value_type(pAttacker->GetVID(), TBattleInfo(dam, 0)));
 			it = m_map_kDamage.find(pAttacker->GetVID());
@@ -2562,9 +2554,11 @@ bool CHARACTER::Damage(LPCHARACTER pAttacker, int dam, EDamageType type) // retu
 		{
 			it->second.iTotalDamage += dam;
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
+			const auto it2 = CBossHasarSiralama::instance().FindBossClass(this->GetRaceNum());
 			if (it2 != nullptr)
 			{
-				it2->BasAmk(m_map_kDamage);
+				CBossHasarSiralama::instance().VecActions(pAttacker, dam);
+				CBossHasarSiralama::instance().UpdateInfo(it2->GetBossHP());
 			}
 #endif
 		}

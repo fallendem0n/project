@@ -173,10 +173,10 @@ void CRonarkSystem::RonarkVerileriTemizle() // ronark verileri temizlendi
 	SECTREE_MANAGER::instance().PurgeMonstersInMap(RONARK_MAP_VNUM); // jotunu sil
 }
 
-void CRonarkSystem::FlagiSil() // her acilista her ihtimale karsi kontrol flagini sifirlayalim
-{
-	quest::CQuestManager::instance().RequestSetEventFlag("ronark_aktif", 0);
-}
+// void CRonarkSystem::FlagiSil() // her acilista her ihtimale karsi kontrol flagini sifirlayalim
+// {
+	// quest::CQuestManager::instance().RequestSetEventFlag("ronark_aktif", 0);
+// }
 
 void CRonarkSystem::GirenLonca(LPCHARACTER girenoyuncu)
 {

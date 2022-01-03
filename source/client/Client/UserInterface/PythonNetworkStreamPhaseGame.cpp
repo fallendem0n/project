@@ -1368,15 +1368,37 @@ void CPythonNetworkStream::__ConvertEmpireText(DWORD dwEmpireID, char* szText)
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
 bool CPythonNetworkStream::RecvBHasarPacket()
 {
-	TBossHasarData p;
-	if (!Recv(sizeof(TBossHasarData), &p))
+	TBossHasarAction p;
+	if (!Recv(sizeof(TBossHasarAction), &p))
 	{
-		Tracenf("Recv TBossHasarData Packet Error");
+		Tracenf("Recv TBossHasarAction Packet Error");
 		return false;
 	}
 
-	PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "BRInfoData", Py_BuildValue("(iisiif)",
-	p.bRank, p.wRaceNum, p.cName, p.bLevel, p.bEmpire, p.fDamage));
+	switch (p.bSubHeader)
+	{
+	case GC_BRINFO_CLEAR:
+	{
+		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "Binary_ClearBRInfo", Py_BuildValue("()"));
+	}
+	break;
+	case GC_BRINFO_ADD: // edit again later
+	{
+		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "Binary_AddBRInfo", Py_BuildValue("()"));
+	}
+	break;
+	case GC_BRINFO_UPDATE:
+	{
+		TBossHasarData kInfo;
+		if (!Recv(sizeof(kInfo), &kInfo))
+			return false;
+		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "Binary_UpdateBRInfo", Py_BuildValue("(iisiii)",
+			kInfo.bRank, kInfo.wRaceNum, kInfo.cName, kInfo.bLevel, kInfo.bEmpire, kInfo.bDamage));
+	}
+	break;
+	default:
+		break;
+	}
 	return true;
 }
 #endif

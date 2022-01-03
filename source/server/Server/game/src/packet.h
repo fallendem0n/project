@@ -3062,6 +3062,11 @@ struct TSwitchbotUpdateItem
 #endif
 
 #ifdef ENABLE_BOSS_HASAR_SIRALAMA
+typedef struct sBossHasarAction
+{
+	BYTE	bHeader;
+	BYTE	bSubHeader;
+} TBossHasarAction;
 typedef struct sBossHasarData
 {
 	BYTE	bHeader;

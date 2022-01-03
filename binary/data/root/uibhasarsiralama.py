@@ -1,4 +1,4 @@
-import ui, wndMgr, chat
+import ui, wndMgr, constInfo
 
 class BossRanking(ui.ThinBoard):
 
@@ -10,7 +10,7 @@ class BossRanking(ui.ThinBoard):
 		ui.ThinBoard.__del__(self)
 
 	def Initialize(self):
-		self.oyuncuDict = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}}
+		self.oyuncuDict = {}
 		self.isLoad = False
 
 	def LoadDialog(self):
@@ -21,7 +21,7 @@ class BossRanking(ui.ThinBoard):
 		self.isLoad = True
 		self.SetPosition(wndMgr.GetScreenWidth() - 330, 210)
 
-		for i in xrange(5):
+		for i in xrange(10): # issue
 			nameText = ui.TextLine()
 			nameText.SetParent(self)
 			nameText.SetPosition(42, 10 + 22*i)
@@ -51,28 +51,32 @@ class BossRanking(ui.ThinBoard):
 			hpGauge.SetWindowHorizontalAlignRight()
 			hpGauge.Hide()
 
+			self.oyuncuDict.update({ int(i) : {} })
 			self.oyuncuDict[i]["NAME"] = nameText
 			self.oyuncuDict[i]["RACEIMG"] = raceIMG
 			self.oyuncuDict[i]["EMPIMG"] = empIMG
 			self.oyuncuDict[i]["HP_TEXT"] = hpText
 			self.oyuncuDict[i]["HP"] = hpGauge
 			
-		self.SetSize(320, 150)
+		self.SetSize(320, 35)
 
 		
-	def UpdateInfo(self, list, race, name, level, empire, damage):
-		self.oyuncuDict[list]["NAME"].SetText("%s [Lv.%d]" % (str(name), int(level)))
-		self.oyuncuDict[list]["NAME"].Show()
+	def UpdateInfo(self):
+		for i in range(len(constInfo.BOOS_DAMAGE_RANKING)):
+			self.oyuncuDict[i]["NAME"].SetText("%s [Lv.%d]" % (constInfo.BOOS_DAMAGE_RANKING[i]["name"], constInfo.BOOS_DAMAGE_RANKING[i]["level"]))
+			self.oyuncuDict[i]["NAME"].Show()
 
-		self.oyuncuDict[list]["RACEIMG"].LoadImage("larry/boss_ranking/%d.tga" % int(race))
-		self.oyuncuDict[list]["RACEIMG"].Show()
+			self.oyuncuDict[i]["RACEIMG"].LoadImage("larry/boss_ranking/%d.tga" % (constInfo.BOOS_DAMAGE_RANKING[i]["race"]))
+			self.oyuncuDict[i]["RACEIMG"].Show()
 
-		self.oyuncuDict[list]["EMPIMG"].LoadImage("larry/boss_ranking/empire/%d.tga" % int(empire))
-		self.oyuncuDict[list]["EMPIMG"].Show()
+			self.oyuncuDict[i]["EMPIMG"].LoadImage("larry/boss_ranking/empire/%d.tga" % (constInfo.BOOS_DAMAGE_RANKING[i]["empire"]))
+			self.oyuncuDict[i]["EMPIMG"].Show()
 
-		self.oyuncuDict[list]["HP_TEXT"].SetText("%%%d" % float(damage))
-		self.oyuncuDict[list]["HP_TEXT"].Show()
-		# if int(poison) > 0:
-			# self.oyuncuDict[list]["HP"].SetGaugeColor("lime")
-		self.oyuncuDict[list]["HP"].SetPercentage(float(damage), 100)
-		self.oyuncuDict[list]["HP"].Show()
+			self.oyuncuDict[i]["HP_TEXT"].SetText("%%%d" % (constInfo.BOOS_DAMAGE_RANKING[i]["damage"]))
+			self.oyuncuDict[i]["HP_TEXT"].Show()
+
+			self.oyuncuDict[i]["HP"].SetPercentage(constInfo.BOOS_DAMAGE_RANKING[i]["damage"], 100)
+			self.oyuncuDict[i]["HP"].Show()
+
+	def OnUpdate(self):
+		self.SetSize(320, int(len(constInfo.BOOS_DAMAGE_RANKING)*35))

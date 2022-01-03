@@ -571,12 +571,9 @@ int main(int argc, char **argv)
 		EventsManager.Initialize();
 #endif
 
-	#ifdef ENABLE_RONARK_SYSTEM
-		RonarkManager.FlagiSil(); // kontrol flagi silindi
-	#endif
-#ifdef ENABLE_BOSS_HASAR_SIRALAMA
-		BossHasarManager.Initialize();
-#endif
+	// #ifdef ENABLE_RONARK_SYSTEM
+		// RonarkManager.FlagiSil(); // kontrol flagi silindi
+	// #endif
 	}
 
 	// Client PackageCrypt

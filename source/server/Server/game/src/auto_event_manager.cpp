@@ -40,7 +40,7 @@ EVENTFUNC(automatic_event_timer)
 		return 0;
 
 	CAutoEventSystem::instance().PrepareChecker();
-	return PASSES_PER_SEC(1);
+	return PASSES_PER_SEC(60);
 }
 
 void CAutoEventSystem::PrepareChecker()
@@ -64,9 +64,8 @@ void CAutoEventSystem::Check(int day, int hour, int minute, int second)
 #ifdef ENABLE_RONARK_SYSTEM
 	if (quest::CQuestManager::instance().GetEventFlag("ronark_event") == 1)
 	{
-		if (hour >= 0 && quest::CQuestManager::instance().GetEventFlag("ronark_aktif") == 0)
+		if (g_bChannel == 99 && hour >= 0)
 		{
-			quest::CQuestManager::instance().RequestSetEventFlag("ronark_aktif", 1);
 			if (CRonarkSystem::instance().GetRonarkStatus() == 0)
 			{
 				CRonarkSystem::instance().RonarkHazirlikBaslat(1); // orta siklet

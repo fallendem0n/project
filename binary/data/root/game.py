@@ -163,10 +163,11 @@ class GameWindow(ui.ScriptWindow):
 		self.ronarkWarScoreBoard.LoadDialog()
 		self.ronarkWarScoreBoard.Hide()		
 
-		import uiBHasarSiralama
-		self.brrankboard = uiBHasarSiralama.BossRanking()
-		self.brrankboard.LoadDialog()
-		self.brrankboard.Hide()		
+		if app.ENABLE_BOSS_RANK:
+			import uiBHasarSiralama
+			self.brrankboard = uiBHasarSiralama.BossRanking()
+			self.brrankboard.LoadDialog()
+			self.brrankboard.Hide()		
 
 		#wj 2014.1.2. ESC키를 누를 시 우선적으로 DropQuestionDialog를 끄도록 만들었다. 하지만 처음에 itemDropQuestionDialog가 선언되어 있지 않아 ERROR가 발생하여 init에서 선언과 동시에 초기화 시킴.
 		self.itemDropQuestionDialog = None
@@ -323,9 +324,10 @@ class GameWindow(ui.ScriptWindow):
 			self.ronarkWarScoreBoard.Hide()
 			self.ronarkWarScoreBoard = None
 
-		if self.brrankboard:
-			self.brrankboard.Hide()
-			self.brrankboard = None
+		if app.ENABLE_BOSS_RANK:
+			if self.brrankboard:
+				self.brrankboard.Hide()
+				self.brrankboard = None
 
 		chat.Close()
 		snd.StopAllSound()
@@ -2353,13 +2355,21 @@ class GameWindow(ui.ScriptWindow):
 				
 			self.ronarkWarScoreBoard.UpdateInfo(int(list), id, name, damage, member, maxcount, observer)
 
-	def BRInfoData(self, list, race, name, level, empire, damage):
-		if self.brrankboard:
-			if not self.brrankboard.IsShow():
-				self.brrankboard.Show()
-				
-			self.brrankboard.UpdateInfo(int(list), race, name, level, empire, damage)
+	if app.ENABLE_BOSS_RANK:
+		def Binary_AddBRInfo(self): # deactive now
+			return
 
+		def Binary_ClearBRInfo(self):
+			constInfo.BOOS_DAMAGE_RANKING = {}
+
+		def Binary_UpdateBRInfo(self, rank, race, name, level, empire, damage):
+			constInfo.BOOS_DAMAGE_RANKING.update({int(rank) : {}})
+			constInfo.BOOS_DAMAGE_RANKING[int(rank)].update({"race" : int(race), "name" : str(name), "level" : int(level), "empire" : int(empire), "damage" : int(damage)})
+
+			if self.brrankboard:
+				if not self.brrankboard.IsShow():
+					self.brrankboard.Show()
+				self.brrankboard.UpdateInfo()
 
 
 	if app.BLACKMARKET:

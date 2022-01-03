@@ -8,6 +8,9 @@
 #include "text_file_loader.h"
 #include "questmanager.h"
 #include "locale_service.h"
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+#include "lwt_bosshasarsiralama.h"
+#endif
 
 CMob::CMob()
 {
@@ -57,7 +60,9 @@ bool CMobManager::Initialize(TMobTable * pTable, int iSize)
 {
 	m_map_pkMobByVnum.clear();
 	m_map_pkMobByName.clear();
-
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+	CBossHasarSiralama::instance().Destroy();
+#endif
 	TMobTable * t = pTable;
 
 
@@ -69,7 +74,10 @@ bool CMobManager::Initialize(TMobTable * pTable, int iSize)
 
 		m_map_pkMobByVnum.insert(std::map<DWORD, CMob *>::value_type(t->dwVnum, pkMob));
 		m_map_pkMobByName.insert(std::map<std::string, CMob *>::value_type(t->szLocaleName, pkMob));
-
+#ifdef ENABLE_BOSS_HASAR_SIRALAMA
+		if (CBossHasarSiralama::instance().BossVnum(t->dwVnum))
+			CBossHasarSiralama::instance().Initialize(t->dwVnum, t->dwMaxHP);
+#endif
 		int SkillCount = 0;
 
 		for (int j = 0; j < MOB_SKILL_MAX_NUM; ++j)

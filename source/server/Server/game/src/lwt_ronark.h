@@ -36,7 +36,7 @@ class CRonarkSystem : public singleton<CRonarkSystem>
 		void		RonarkArenayaGit(LPCHARACTER oyuncu);
 		void		GirenLonca(LPCHARACTER girenoyuncu);
 		void		LoncaSayisiArttir();
-		void		FlagiSil();
+		// void		FlagiSil();
 
 		void		RonarkHazirlikBaslat(BYTE siklet);
 		void		VerileriGonder(bool a = false);
