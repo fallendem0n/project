@@ -65,12 +65,11 @@ BossHasarSiralamaInfo* CBossHasarSiralama::FindBossClass(const DWORD dwID) const
 
 void CBossHasarSiralama::Initialize(const DWORD dwNumber, const DWORD dwMaxHP)
 {
-	bossCont.emplace_back(M2_NEW BossHasarSiralamaInfo(dwNumber, dwMaxHP));
+	bossCont.pusback(M2_NEW BossHasarSiralamaInfo(dwNumber, dwMaxHP));
 #ifdef LOG_TUT
 	sys_err("Create class (vnum : %d - maxHP : %d)", dwNumber, dwMaxHP);
 #endif
 }
-
 
 void CBossHasarSiralama::VecActions(const LPCHARACTER ch, const DWORD damage)
 {
@@ -87,7 +86,7 @@ void CBossHasarSiralama::VecActions(const LPCHARACTER ch, const DWORD damage)
 		d.bLevel = static_cast<BYTE>(ch->GetLevel());
 		d.bEmpire = ch->GetEmpire();
 		d.dwDamage = damage;
-		BossRankVec.emplace_back(ch, d);
+		BossRankVec.push_back(ch, d);
 		SendClient(GC_BRINFO_ADD, nullptr, 0);
 	}
 }
@@ -108,12 +107,12 @@ void CBossHasarSiralama::SendClient(const BYTE bSubHeader, const void* c_pvData,
 
 void CBossHasarSiralama::CheckBoss(const int hour, const int min, const int sec) const
 {
-	if (sec == 0)
-	{
-		for (BYTE i (0); i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); ++i)
+	// if (sec == 0)
+	// {
+		for (BYTE i = 0; i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); i++)
 		{
 			if (_BossInfos[i][IS_SPAWN] == true)
-				return;
+				continue;
 			if (_BossInfos[i][RESPAWN_TIME_M] == 0 && hour % _BossInfos[i][RESPAWN_TIME_H] == 0 && min == 0)
 			{
 				CHARACTER_MANAGER::instance().SpawnMob(_BossInfos[i][BOSS_VNUM], _BossInfos[i][MAP_INDEX], _BossInfos[i][POS_X] * 100, _BossInfos[i][POS_Y] * 100, 0, false, 360);
@@ -125,12 +124,12 @@ void CBossHasarSiralama::CheckBoss(const int hour, const int min, const int sec)
 				_BossInfos[i][IS_SPAWN] = true;
 			}
 		}
-	}
+	// }
 }
 
 bool CBossHasarSiralama::BossVnum(const DWORD mVnum) const
 {
-	for (BYTE i (0); i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); ++i)
+	for (BYTE i = 0; i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); i++)
 	{
 		if (mVnum == _BossInfos[i][BOSS_VNUM])
 			return true;
@@ -162,11 +161,12 @@ void CBossHasarSiralama::UpdateInfo(const DWORD bossHP)
 void CBossHasarSiralama::BossAction(DWORD dwRaceNum)
 {
 	BYTE index;
-	for (BYTE i (0); i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); ++i)
+	for (BYTE i = 0; i < sizeof(_BossInfos) / sizeof(_BossInfos[0]); i++)
 	{
 		if (dwRaceNum == _BossInfos[i][BOSS_VNUM])
 		{
 			_BossInfos[i][IS_SPAWN] = false;
+			break;
 		}
 	}
 }
