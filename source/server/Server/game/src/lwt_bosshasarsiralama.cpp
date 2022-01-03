@@ -65,7 +65,7 @@ BossHasarSiralamaInfo* CBossHasarSiralama::FindBossClass(const DWORD dwID) const
 
 void CBossHasarSiralama::Initialize(const DWORD dwNumber, const DWORD dwMaxHP)
 {
-	bossCont.pusback(M2_NEW BossHasarSiralamaInfo(dwNumber, dwMaxHP));
+	bossCont.push_back(M2_NEW BossHasarSiralamaInfo(dwNumber, dwMaxHP));
 #ifdef LOG_TUT
 	sys_err("Create class (vnum : %d - maxHP : %d)", dwNumber, dwMaxHP);
 #endif
